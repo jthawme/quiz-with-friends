@@ -5,7 +5,7 @@ import { IconList, Icon } from "../Icon";
 
 import styles from "./Button.module.scss";
 
-type ButtonType = "normal" | "positive" | "negative";
+export type ButtonType = "normal" | "positive" | "negative";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -26,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
 }: ButtonProps) => {
   const cls = classNames(
     styles.wrapper,
+    styles.interaction,
     styles[buttonType],
     { [styles.reverse]: reverse },
     className,

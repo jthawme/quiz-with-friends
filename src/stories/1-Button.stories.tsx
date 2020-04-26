@@ -2,6 +2,7 @@ import React from "react";
 import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { Button } from "../components/Button";
+import { IconButton } from "../components/IconButton";
 
 import "../styles/global.scss";
 import { iconSelect } from "./_utils";
@@ -37,4 +38,19 @@ export const Text: React.FC = () => {
       {label}
     </Button>
   );
+};
+
+export const Icon: React.FC = () => {
+  const icon = iconSelect("Icon");
+  const type = select(
+    "Button Type",
+    {
+      normal: "normal",
+      positive: "positive",
+      negative: "negative",
+    },
+    "normal",
+  );
+
+  return <IconButton icon={icon} buttonType={type} />;
 };

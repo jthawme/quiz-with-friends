@@ -20,22 +20,24 @@
 
   align-items: center;
 
-  position: relative;
-
   padding: var(--button-padding);
   margin: var(--button-margin);
 
-  background-color: var(--button-background-color);
-  color: var(--button-foreground-color);
-
   border: 0;
   border-radius: var(--button-radius);
+}
+
+.interaction {
+  position: relative;
 
   cursor: pointer;
 
   overflow: hidden;
 
   outline: none;
+
+  background-color: var(--button-background-color);
+  color: var(--button-foreground-color);
 
   &:after {
     position: absolute;
