@@ -1,0 +1,110 @@
+:root {
+  --input-border-radius: var(--radii-lg);
+  --input-border: 1px solid var(--color-text-v-light);
+  --input-color: var(--color-text);
+  --input-placeholder-color: var(--color-text-v-light);
+  --input-padding: var(--size-unit-4) var(--size-unit-5);
+  --input-font-size: var(--font-size-regular);
+  --input-font-weight: var(--font-weight-normal);
+
+  --input-button-padding: var(--size-unit-1) var(--size-unit-4);
+  --input-button-width: var(--size-unit-14);
+
+  --input-button-border-radius: 0;
+  --input-button-icon-size: var(--size-unit-6);
+}
+
+.wrapper {
+  position: relative;
+
+  display: inline-flex;
+
+  width: 100%;
+
+  border-radius: var(--input-border-radius);
+  border: var(--input-border);
+
+  overflow: hidden;
+}
+
+.normal {
+}
+
+.large {
+  --input-font-size: var(--font-size-x-large);
+  --input-font-weight: var(--font-weight-bold);
+  // --input-button-padding:
+  --input-button-width: var(--size-unit-20);
+  --input-button-icon-size: var(--size-unit-8);
+}
+
+.input {
+  position: relative;
+
+  flex-grow: 1;
+
+  width: 100%;
+
+  background-color: transparent;
+  border: none;
+
+  outline: 0;
+
+  padding: var(--input-padding);
+
+  color: var(--input-color);
+
+  line-height: normal;
+
+  font-size: var(--input-font-size);
+  font-weight: var(--input-font-weight);
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
+  }
+
+  .hasSubmit & {
+    padding-right: var(--input-button-width);
+  }
+}
+
+.button {
+  --icon-button-border-radius: var(--input-button-border-radius);
+  --icon-button-inner-size: var(--input-button-icon-size);
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: var(--input-button-width);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--input-button-padding);
+
+  height: 100%;
+
+  background-color: var(--color-accent-3-highlight);
+  color: var(--color-accent-3);
+
+  outline: 0;
+  border: 0;
+
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(var(--size-unit-2), 0, 0);
+
+  transition: {
+    property: opacity, transform;
+    duration: 0.25s;
+  }
+
+  .dirty & {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

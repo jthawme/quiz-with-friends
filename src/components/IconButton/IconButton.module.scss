@@ -1,6 +1,7 @@
 :root {
   --icon-button-size: 36px;
   --icon-button-inner-size: 24px;
+  --icon-button-border-radius: 100%;
 }
 
 .wrapper {
@@ -12,7 +13,7 @@
   width: var(--icon-button-size);
   height: var(--icon-button-size);
 
-  border-radius: 100%;
+  border-radius: var(--icon-button-border-radius);
 
   border: 0;
 
