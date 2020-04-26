@@ -4,22 +4,23 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
   plugins: ["react", "@typescript-eslint", "prettier"],
   env: {
+    es6: true,
     browser: true,
     jasmine: true,
-    jest: true
+    jest: true,
   },
   rules: {
-    "prettier/prettier": ["error", { singleQuote: false }]
+    "prettier/prettier": ["error", { singleQuote: false }],
   },
   settings: {
     react: {
       pragma: "React",
-      version: "detect"
-    }
+      version: "detect",
+    },
   },
-  parser: "@typescript-eslint/parser"
+  parser: "@typescript-eslint/parser",
 };

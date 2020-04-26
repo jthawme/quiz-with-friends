@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+
+  background-color: var(--color-accent-1-highlight);
+  color: var(--color-accent-1);
+
+  border-radius: var(--radii-md);
+}
+
+.initial {
+  top: 50px;
+  left: 100px;
+  width: 50px;
+  height: 50px;
+}
+
+.expanded {
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.trans {
+  transition: {
+    property: opacity;
+    duration: 250ms;
+  }
+}
