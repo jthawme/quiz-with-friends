@@ -10,10 +10,12 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.0",
+    "classnames": "^2.2.6",
     "concurrently": "^5.2.0",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-feather": "^2.0.8",
     "react-scripts": "3.4.1",
     "typed-css-modules": "^0.6.3",
     "typescript": "~3.7.2"
@@ -25,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tsc --noEmit",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "concurrently \"npm:ts:css -- -w\" \"start-storybook -p 9009 -s public\"",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
@@ -50,6 +52,7 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
+    "@types/classnames": "^2.2.10",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "eslint-config-prettier": "^6.11.0",

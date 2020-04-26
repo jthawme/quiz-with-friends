@@ -1,7 +1,10 @@
 import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
-import { Button } from "@storybook/react/demo";
+import { Button } from "../components/Button";
+
+import "../styles/global.scss";
+import { iconSelect } from "./_utils";
 
 export default {
   title: "Button",
@@ -11,14 +14,27 @@ export default {
 
 export const Text: React.FC = () => {
   const label = text("Label", "Hello Button");
+  const hasIcon = boolean("Has icon", true);
+  const type = select(
+    "Button Type",
+    {
+      normal: "normal",
+      positive: "positive",
+      negative: "negative",
+    },
+    "normal",
+  );
+  const icon = iconSelect("Icon");
+  const reverse = boolean("Reverse", false);
 
-  return <Button onClick={action("clicked")}>{label}</Button>;
+  return (
+    <Button
+      onClick={action("clicked")}
+      icon={hasIcon ? icon : undefined}
+      buttonType={type}
+      reverse={reverse}
+    >
+      {label}
+    </Button>
+  );
 };
-
-export const Emoji: React.FC = () => (
-  <Button onClick={action("clicked")}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
-);

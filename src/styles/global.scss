@@ -55,6 +55,8 @@ input,
 select,
 button {
   font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--font-weight-normal);
   color: inherit;
 }
 
