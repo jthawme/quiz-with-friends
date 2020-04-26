@@ -1,0 +1,89 @@
+:root {
+  --tooltip-background-color: var(--color-accent-1-highlight);
+  --tooltip-foreground-color: var(--color-accent-1);
+  --tooltip-expand-width: 250px;
+  --tooltip-expand-height: 150px;
+}
+
+.wrapper {
+  position: relative;
+
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+}
+
+.expandElement {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  background-color: var(--tooltip-background-color);
+  color: var(--tooltip-foreground-color);
+
+  transition: {
+    property: border-radius;
+    duration: 300ms;
+  }
+}
+
+.button {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  background-color: var(--tooltip-background-color);
+  color: var(--tooltip-foreground-color);
+
+  z-index: 2;
+}
+
+.right .expandElement,
+.right .button {
+  left: auto;
+  right: 0;
+}
+
+.initial {
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  border-radius: var(--icon-button-size);
+}
+
+.expanded {
+  min-width: var(--icon-button-size);
+  min-height: var(--icon-button-size);
+
+  width: var(--tooltip-expand-width);
+  max-height: var(--tooltip-expand-height);
+
+  overflow: auto;
+
+  border-radius: var(--radii-md);
+}
+
+.content {
+  opacity: 0;
+
+  padding: var(--size-unit-2) var(--size-unit-2) var(--size-unit-2)
+    var(--icon-button-size);
+
+  transition: {
+    property: opacity;
+    duration: 300ms;
+  }
+
+  pointer-events: none;
+
+  &.show {
+    opacity: 1;
+
+    pointer-events: all;
+  }
+}
+
+.right .content {
+  padding: var(--size-unit-2) var(--icon-button-size) var(--size-unit-2)
+    var(--size-unit-2);
+}

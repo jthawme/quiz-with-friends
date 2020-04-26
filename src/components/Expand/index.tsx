@@ -25,6 +25,7 @@ interface ExpandDivProps {
   onAfter?: (state: boolean) => void;
   easing?: string;
   duration?: number;
+  absolute?: boolean;
 }
 
 const ExpandDiv: React.FC<ExpandDivProps> = ({
@@ -37,6 +38,7 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
   easing = "ease-in-out",
   onAfter,
   onBefore,
+  absolute = false,
 }: ExpandDivProps) => {
   const [state, dispatch] = useReducer<
     Reducer<TransitionState, TransitionActions>
@@ -44,12 +46,7 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
 
   const elRef = useRef<HTMLDivElement | null>(null);
   const cls = useRef<string>(
-    getClassName(
-      initialClassName,
-      expandedClassName,
-      state.isExpanded,
-      className,
-    ),
+    getClassName(initialClassName, expandedClassName, state.isExpanded),
   );
 
   const transitionStates = useCallback(
@@ -65,7 +62,6 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
           initialClassName,
           expandedClassName,
           expandState,
-          className,
         );
 
         await singleRaf();
@@ -76,11 +72,13 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
           initialClassName,
           expandedClassName,
           !expandState,
-          className,
         );
 
         const anim = elRef.current.animate(
-          [clientRectToStyle(first), clientRectToStyle(last)],
+          [
+            clientRectToStyle(first, absolute),
+            clientRectToStyle(last, absolute),
+          ],
           {
             duration,
             easing,
@@ -92,7 +90,6 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
             initialClassName,
             expandedClassName,
             expandState,
-            className,
           );
 
           if (onAfter) {
@@ -109,7 +106,7 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
         };
       }
     },
-    [initialClassName, expandedClassName, className, duration, easing],
+    [initialClassName, expandedClassName, duration, easing, absolute],
   );
 
   useLayoutEffect(() => {
@@ -126,7 +123,7 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
   }, [expand, state, transitionStates]);
 
   return (
-    <div ref={elRef} className={`${cls.current} ${className}`}>
+    <div ref={elRef} className={`${cls.current} ${className || ""}`}>
       {children}
     </div>
   );

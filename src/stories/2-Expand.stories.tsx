@@ -31,7 +31,7 @@ export const Standard: React.FC = () => {
         setFirst(!state);
         setLast(state);
       }}
-      duration={1000}
+      duration={300}
     >
       <div className={styles.trans} style={{ opacity: first || last ? 1 : 0 }}>
         {first && <span>Hello small</span>}

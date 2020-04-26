@@ -17,12 +17,14 @@ interface IconButtonProps
 const IconButton: React.FC<IconButtonProps> = ({
   icon,
   buttonType = "normal",
+  className,
   ...props
 }: IconButtonProps) => {
   const cls = classNames(
     styles.wrapper,
     buttonStyles.interaction,
     buttonStyles[buttonType],
+    className,
   );
 
   return (

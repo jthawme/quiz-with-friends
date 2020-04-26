@@ -5,7 +5,7 @@ import { IconList, Icon } from "../Icon";
 
 import styles from "./Button.module.scss";
 
-export type ButtonType = "normal" | "positive" | "negative";
+export type ButtonType = "normal" | "positive" | "negative" | "inherit";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;

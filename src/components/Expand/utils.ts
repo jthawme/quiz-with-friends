@@ -22,7 +22,6 @@ export const getClassName = (
   initial: string,
   expanded: string,
   isExpanded: boolean,
-  extra?: string,
 ): string => {
   return classNames(
     {
@@ -31,15 +30,25 @@ export const getClassName = (
     {
       [expanded]: isExpanded,
     },
-    extra,
   );
 };
 
 export const clientRectToStyle = (
   clientRect: ClientRect,
-): { [key: string]: string } => ({
-  width: `${clientRect.width}px`,
-  height: `${clientRect.height}px`,
-  top: `${clientRect.top}px`,
-  left: `${clientRect.left}px`,
-});
+  absolute?: boolean,
+): { [key: string]: string } => {
+  const size = {
+    width: `${clientRect.width}px`,
+    height: `${clientRect.height}px`,
+  };
+
+  if (absolute) {
+    return size;
+  }
+
+  return {
+    ...size,
+    top: `${clientRect.top}px`,
+    left: `${clientRect.left}px`,
+  };
+};

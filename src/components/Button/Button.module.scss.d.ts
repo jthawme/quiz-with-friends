@@ -4,6 +4,7 @@ declare const styles: {
   readonly "normal": string;
   readonly "positive": string;
   readonly "negative": string;
+  readonly "inherit": string;
   readonly "icon": string;
   readonly "reverse": string;
   readonly "text": string;

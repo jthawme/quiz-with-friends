@@ -84,6 +84,11 @@
   --button-foreground-color: var(--color-accent-1);
 }
 
+.inherit {
+  --button-background-color: transparent;
+  --button-foreground-color: inherit;
+}
+
 .icon {
   width: var(--button-icon-size);
   height: var(--button-icon-size);
