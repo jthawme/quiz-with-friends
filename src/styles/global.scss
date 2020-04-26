@@ -1,0 +1,81 @@
+@import "fonts";
+@import "variables";
+
+.text-main-heading {
+  font-family: var(--font-family-headline);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-x-large);
+}
+
+.text-sub-heading {
+  font-family: var(--font-family-headline);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-large);
+}
+
+.text-inline-heading {
+  font-family: var(--font-family-headline);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+}
+
+.text-inline-heading {
+  font-family: var(--font-family-headline);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+}
+
+.text-body {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+}
+
+.text-small-body {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-small);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  @extend .text-body;
+
+  min-height: 100%;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+select,
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  @extend .text-main-heading;
+}
+
+h2 {
+  @extend .text-sub-heading;
+}
+
+h3 {
+  @extend .text-inline-heading;
+}

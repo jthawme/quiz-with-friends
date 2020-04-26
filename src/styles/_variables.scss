@@ -1,0 +1,37 @@
+:root {
+  --font-family-body: "GT Walsheim Pro", sans-serif;
+  --font-family-headline: "GT Walsheim Pro", sans-serif;
+
+  --font-weight-normal: 500;
+  --font-weight-bold: 700;
+
+  --font-size-x-large: 56px;
+  --font-size-large: 28px;
+  --font-size-medium: 21px;
+  --font-size-regular: 16px;
+  --font-size-small: 12px;
+
+  --color-text: #373b51;
+  --color-text-light: #84919d;
+  --color-text-v-light: #cfdae3;
+  --color-bg-light: #f6f6f6;
+  --color-accent-1: #ff5555;
+  --color-accent-1-highlight: #ffdddd;
+  --color-accent-2: #55a3ff;
+  --color-accent-2-highlight: #fef6db;
+  --color-accent-3: #3eb96f;
+  --color-accent-3-highlight: #dbffce;
+
+  @for $i from 1 through 20 {
+    --size-unit-#{$i}: #{$i * 4}px;
+  }
+
+  --size-page-margin: var(--size-unit-4);
+
+  @media screen and (min-width: 768px) {
+    --size-page-margin: var(--size-unit-8);
+  }
+
+  --radii-md: 4px;
+  --radii-lg: 10px;
+}
