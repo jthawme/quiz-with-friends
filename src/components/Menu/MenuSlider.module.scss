@@ -1,0 +1,60 @@
+:root {
+  --menu-width: 80vw;
+  --menu-backdrop-color: var(--color-text-v-light);
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --menu-width: 250px;
+  }
+}
+
+.container {
+  position: fixed;
+
+  top: 0;
+  right: 100%;
+
+  z-index: 2;
+
+  width: var(--menu-width);
+  height: 100vh;
+
+  background-color: var(--color-bg-light);
+
+  transition: {
+    property: transform;
+    duration: 350ms;
+    timing-function: var(--transition-swift-out);
+  }
+}
+
+.open {
+  transform: translate3d(100%, 0, 0);
+}
+
+.backdrop {
+  position: fixed;
+
+  z-index: 1;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: var(--menu-backdrop-color);
+
+  transition: {
+    property: opacity, visibility;
+    duration: 350ms;
+  }
+
+  opacity: 0;
+  visibility: hidden;
+
+  &Open {
+    opacity: 0.5;
+    visibility: visible;
+  }
+}

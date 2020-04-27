@@ -1,0 +1,11 @@
+:root {
+  --menu-item-gap: var(--size-unit-3);
+}
+
+.menu {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  row-gap: var(--menu-item-gap);
+}

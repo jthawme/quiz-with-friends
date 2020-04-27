@@ -1,0 +1,81 @@
+:root {
+  --menu-item-icon-margin: 0 var(--size-unit-4) 0 0;
+
+  --menu-item-foreground-color: var(--color-text);
+  --menu-item-background-color: transparent;
+
+  --menu-item-active-foreground-color: var(--color-text);
+  --menu-item-active-background-color: var(--color-text-v-light);
+
+  --menu-sub-item-icon-padding: 0 0 0 var(--size-unit-4);
+
+  --menu-sub-item-foreground-color: var(--color-text-light);
+  --menu-sub-item-background-color: transparent;
+
+  --menu-sub-item-active-foreground-color: var(--color-text-light);
+  --menu-sub-item-active-background-color: var(--color-text-v-light);
+}
+
+.wrapper {
+  display: inline-flex;
+
+  align-items: center;
+
+  text-decoration: none;
+
+  outline: 0;
+  border: 0;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+
+  transition: {
+    duration: 150ms;
+    property: opacity;
+  }
+
+  color: var(--menu-item-foreground-color);
+  background-color: var(--menu-item-background-color);
+
+  &.active {
+    color: var(--menu-item-active-foreground-color);
+    background-color: var(--menu-item-active-background-color);
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+.sub {
+  padding: var(--menu-sub-item-icon-padding);
+
+  color: var(--menu-sub-item-foreground-color);
+  background-color: var(--menu-sub-item-background-color);
+
+  &.active {
+    color: var(--menu-sub-item-active-foreground-color);
+    background-color: var(--menu-sub-item-active-background-color);
+  }
+}
+
+.normal {
+}
+
+.positive {
+  --menu-sub-item-foreground-color: var(--color-accent-3);
+}
+
+.negative {
+  --menu-sub-item-foreground-color: var(--color-accent-1);
+}
+
+.icon {
+  margin: var(--menu-item-icon-margin);
+}
+
+.text {
+}
