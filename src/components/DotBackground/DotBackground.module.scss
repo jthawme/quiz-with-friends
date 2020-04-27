@@ -1,0 +1,35 @@
+:root {
+  --dot-size: var(--size-unit-3);
+}
+
+.container {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.dot {
+  position: absolute;
+
+  width: var(--dot-size);
+  height: var(--dot-size);
+
+  border-radius: 100%;
+
+  transform: translate3d(-50%, -50%, 0);
+
+  &:nth-child(3n) {
+    background-color: var(--color-accent-1);
+  }
+
+  &:nth-child(3n + 1) {
+    background-color: var(--color-accent-2);
+  }
+
+  &:nth-child(3n + 2) {
+    background-color: var(--color-accent-3);
+  }
+}
