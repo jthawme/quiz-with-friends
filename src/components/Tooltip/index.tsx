@@ -52,7 +52,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children }: TooltipProps) => {
   );
 
   return (
-    <div
+    <span
       ref={onSetRef}
       className={`${styles.wrapper} ${isRight ? styles.right : ""}`}
     >
@@ -79,7 +79,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children }: TooltipProps) => {
           {children}
         </div>
       </ExpandDiv>
-    </div>
+    </span>
   );
 };
 

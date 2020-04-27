@@ -8,12 +8,16 @@
 .wrapper {
   position: relative;
 
+  display: inline-block;
+
   width: var(--icon-button-size);
   height: var(--icon-button-size);
 }
 
 .expandElement {
   position: absolute;
+
+  z-index: 10;
 
   top: 0;
   left: 0;
@@ -58,13 +62,12 @@
   width: var(--tooltip-expand-width);
   max-height: var(--tooltip-expand-height);
 
-  overflow: auto;
-
   border-radius: var(--radii-md);
 }
 
 .content {
   opacity: 0;
+  width: var(--tooltip-expand-width);
 
   padding: var(--size-unit-2) var(--size-unit-2) var(--size-unit-2)
     var(--icon-button-size);
@@ -80,6 +83,8 @@
     opacity: 1;
 
     pointer-events: all;
+
+    overflow: auto;
   }
 }
 

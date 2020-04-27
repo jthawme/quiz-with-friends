@@ -1,0 +1,48 @@
+:root {
+  --title-margin: var(--size-unit-4) 0 var(--size-unit-6);
+  --title-font-size: var(--font-size-x-large);
+  --title-help-margin: var(--size-unit-1) var(--size-unit-2) 0;
+}
+
+.wrapper {
+  margin: var(--title-margin);
+}
+
+.wrapper,
+.content {
+  display: flex;
+
+  align-items: center;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.title {
+  font-size: var(--title-font-size);
+
+  padding: 0;
+  margin: 0;
+}
+
+.help {
+  margin: var(--title-help-margin);
+  font-size: var(--font-size-regular);
+}
+
+.main {
+  font-size: var(--title-font-size);
+}
+
+.sub {
+  font-size: var(--title-font-size);
+}
+
+.inline {
+  font-size: var(--title-font-size);
+}
+
+.right {
+  flex-grow: 0;
+}
