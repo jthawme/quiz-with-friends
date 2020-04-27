@@ -14,6 +14,10 @@
   --input-button-icon-size: var(--size-unit-6);
 }
 
+.outer {
+  width: 100%;
+}
+
 .wrapper {
   position: relative;
 
@@ -33,7 +37,6 @@
 .large {
   --input-font-size: var(--font-size-x-large);
   --input-font-weight: var(--font-weight-bold);
-  // --input-button-padding:
   --input-button-width: var(--size-unit-20);
   --input-button-icon-size: var(--size-unit-8);
 }
@@ -107,4 +110,15 @@
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+
+.valueLength {
+  font-size: var(--font-size-small);
+
+  padding: 0;
+  margin: var(--size-unit-2) var(--size-unit-2) 0 0;
+
+  text-align: right;
+
+  color: var(--color-accent-1);
 }

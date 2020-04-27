@@ -16,6 +16,7 @@ const Input: React.FC<InputProps> = ({
   onSubmit,
   onChange,
   inputSize = "normal",
+  maxLength,
   ...props
 }: InputProps) => {
   const [internalValue, setInternalValue] = useState<
@@ -45,11 +46,24 @@ const Input: React.FC<InputProps> = ({
   );
 
   return (
-    <div className={cls}>
-      <input className={styles.input} onChange={onInternalChange} {...props} />
+    <div className={styles.outer}>
+      <div className={cls}>
+        <input
+          className={styles.input}
+          onChange={onInternalChange}
+          maxLength={maxLength}
+          value={internalValue}
+          {...props}
+        />
 
-      {onSubmit && (
-        <IconButton className={styles.button} type="submit" icon="check" />
+        {onSubmit && (
+          <IconButton className={styles.button} type="submit" icon="check" />
+        )}
+      </div>
+      {maxLength && (
+        <p className={styles.valueLength}>
+          {maxLength - (internalValue ? internalValue.toString().length : 0)}
+        </p>
       )}
     </div>
   );

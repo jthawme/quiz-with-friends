@@ -10,7 +10,3 @@ export default {
 export const ToStorybook: React.FC = () => (
   <Welcome showApp={linkTo("Button")} />
 );
-
-ToStorybook.story = {
-  name: "to Storybook",
-};

@@ -30,3 +30,15 @@ export const InputLarge: React.FC = () => {
     </div>
   );
 };
+
+export const InputLength: React.FC = () => {
+  return (
+    <div style={{ padding: "20px" }}>
+      <Input
+        maxLength={250}
+        placeholder="Input here..."
+        onSubmit={action("submitted")}
+      />
+    </div>
+  );
+};
