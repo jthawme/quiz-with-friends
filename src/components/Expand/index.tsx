@@ -92,10 +92,6 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
             expandState,
           );
 
-          if (onAfter) {
-            onAfter(expandState);
-          }
-
           dispatch({
             type: "TRANSITION_UPDATE",
             payload: {
@@ -103,6 +99,10 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
               isTransitioning: false,
             },
           });
+
+          if (onAfter) {
+            onAfter(expandState);
+          }
         };
       }
     },

@@ -9,7 +9,7 @@ type TitleTypes = "main" | "sub" | "inline";
 
 interface TitleProps {
   text: string;
-  helpText: string;
+  helpText?: string;
   rightSlot?: React.ReactNode;
   tagName?: keyof JSX.IntrinsicElements;
   type?: TitleTypes;

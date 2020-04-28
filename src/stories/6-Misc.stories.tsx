@@ -6,6 +6,8 @@ import "../styles/global.scss";
 import { DotBackground } from "../components/DotBackground";
 import { Title } from "../components/Title";
 import { Button } from "../components/Button";
+import { Alert } from "../components/Alert";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "Misc",
@@ -30,5 +32,17 @@ export const TitleBlock: React.FC = () => {
       helpText={"This is some help text"}
       rightSlot={<Button icon="plus-circle">New post</Button>}
     />
+  );
+};
+
+export const AlertBlock: React.FC = () => {
+  return (
+    <Alert onClose={action("Closed")}>
+      <Title type="sub" text="Title" tagName="p" />
+      <p>
+        Hello, this is some text that may be some sort of update like a new
+        serivce worker! That&apos;d be good
+      </p>
+    </Alert>
   );
 };

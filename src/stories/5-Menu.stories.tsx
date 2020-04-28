@@ -44,8 +44,11 @@ export const MenuItemLink: React.FC = () => {
 export const Section: React.FC = () => {
   const isOpen = boolean("Open", false);
   return (
-    <MenuSlider open={isOpen}>
-      <Menu items={MENU_ITEMS} />
-    </MenuSlider>
+    <main style={{ display: "flex" }}>
+      <MenuSlider open={isOpen}>
+        <Menu items={MENU_ITEMS} />
+      </MenuSlider>
+      <div style={{ flexGrow: 1 }}>Hello good sire</div>
+    </main>
   );
 };

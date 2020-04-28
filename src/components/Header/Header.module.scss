@@ -1,0 +1,12 @@
+.header {
+  display: grid;
+
+  grid-template-columns: min-content 1fr min-content;
+}
+
+.left {
+}
+
+.logo {
+  padding: 0 var(--size-unit-4);
+}

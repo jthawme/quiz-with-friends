@@ -17,7 +17,6 @@ const MenuSlider: React.FC<MenuSliderProps> = ({
   onClose,
 }: MenuSliderProps) => {
   const domNode = useRef<HTMLDivElement | null>(null);
-  const [isSet, setIsSet] = useState(false);
 
   const cls = classNames(styles.container, {
     [styles.open]: open,
@@ -29,8 +28,6 @@ const MenuSlider: React.FC<MenuSliderProps> = ({
     document.body.appendChild(el);
 
     domNode.current = el;
-
-    setIsSet(true);
 
     return (): void => {
       el.parentElement?.removeChild(el);
