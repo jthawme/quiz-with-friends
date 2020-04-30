@@ -62,8 +62,8 @@
     content: "";
   }
 
-  &:hover:after,
-  &:focus:after {
+  &:not([disabled]):hover:after,
+  &:not([disabled]):focus:after {
     opacity: 0.5;
   }
 

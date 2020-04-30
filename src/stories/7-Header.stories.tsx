@@ -6,6 +6,7 @@ import { Header } from "../components/Header";
 
 import "normalize.css";
 import "../styles/global.scss";
+import { UserArea } from "../components/UserArea";
 
 export default {
   title: "Header",
@@ -22,4 +23,14 @@ export const HeaderBlock: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   return <Header menuOpen={open} onToggleMenu={(): void => setOpen(!open)} />;
+};
+
+export const UserAreaBlock: React.FC = () => {
+  return (
+    <div
+      style={{ display: "flex", justifyContent: "flex-end", width: "250px" }}
+    >
+      <UserArea name="User 2020" image={false} />
+    </div>
+  );
 };

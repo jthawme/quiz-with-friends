@@ -19,16 +19,12 @@ const Menu: React.FC<MenuProps> = ({
 }: MenuProps) => {
   return (
     <El className={styles.menu}>
-      {items.map((item) => (
-        <React.Fragment key={`${item.text}-${item.to}`}>
+      {items.map((item, index) => (
+        <React.Fragment key={`${index}-${item.to}`}>
           <MenuItem {...item} />
           {item.items &&
             item.items.map((subItem) => (
-              <MenuItem
-                key={`${subItem.text}-${subItem.to}`}
-                isSubmenu
-                {...subItem}
-              />
+              <MenuItem key={`${index}-${subItem.to}`} isSubmenu {...subItem} />
             ))}
         </React.Fragment>
       ))}

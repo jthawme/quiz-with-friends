@@ -17,6 +17,7 @@ import {
   User,
   Image,
   Smile,
+  Edit,
 } from "react-feather";
 
 export const icons = {
@@ -37,6 +38,7 @@ export const icons = {
   user: User,
   image: Image,
   smile: Smile,
+  edit: Edit,
 };
 
 export type IconList = keyof typeof icons;

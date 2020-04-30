@@ -1,7 +1,13 @@
 .header {
+  position: fixed;
+
+  z-index: 10;
+
   display: grid;
 
   grid-template-columns: min-content 1fr min-content;
+
+  padding: var(--size-page-margin);
 }
 
 .left {

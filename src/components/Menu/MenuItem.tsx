@@ -11,10 +11,12 @@ type MenuItemType = "normal" | "positive" | "negative";
 export interface MenuItemObject {
   to?: string;
   onClick?: () => void;
-  text: string;
+  children: React.ReactNode;
   icon?: IconList;
   active?: boolean;
   type?: MenuItemType;
+  tagName?: keyof JSX.IntrinsicElements;
+  disabled?: boolean;
 }
 
 export interface MenuItemProps extends MenuItemObject {
@@ -24,10 +26,12 @@ export interface MenuItemProps extends MenuItemObject {
 const MenuItem: React.FC<MenuItemProps> = ({
   to,
   onClick,
-  text,
+  children,
   icon,
   isSubmenu,
   type = "normal",
+  tagName: El = "button",
+  disabled,
 }: MenuItemProps) => {
   const innerContent = useMemo(() => {
     return (
@@ -37,10 +41,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
             <Icon name={icon} />
           </span>
         )}
-        <span className={`${styles.text} text-body-bold`}>{text}</span>
+        <span className={`${styles.text} text-body-bold`}>{children}</span>
       </>
     );
-  }, [text, icon]);
+  }, [children, icon]);
 
   const cls = classNames(
     styles.wrapper,
@@ -52,16 +56,16 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   if (to) {
     return (
-      <Link className={cls} to={to}>
+      <Link className={cls} to={to} disabled={disabled}>
         {innerContent}
       </Link>
     );
   }
 
   return (
-    <button className={cls} onClick={onClick}>
+    <El className={cls} onClick={onClick} disabled={disabled}>
       {innerContent}
-    </button>
+    </El>
   );
 };
 
