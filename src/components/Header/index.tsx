@@ -24,6 +24,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className={styles.logo}>
         <Logo />
       </div>
+      <div className={styles.right}>{rightSlot || null}</div>
     </header>
   );
 };

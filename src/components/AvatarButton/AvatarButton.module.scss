@@ -1,0 +1,34 @@
+:root {
+  --avatar-button-size: 36px;
+  --avatar-button-inner-size: 24px;
+  --avatar-button-border-radius: 100%;
+
+  --avatar-button-border-width: 1px;
+  --avatar-button-border-color: white;
+
+  --avatar-button-text-size: var(--font-size-small);
+}
+
+.wrapper {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: var(--avatar-button-size);
+  height: var(--avatar-button-size);
+
+  padding: 0;
+
+  border-radius: var(--avatar-button-border-radius);
+
+  border: var(--avatar-button-border-width) solid
+    var(--avatar-button-border-color);
+
+  background-size: cover;
+  background-position: center;
+}
+
+.content {
+  font-size: var(--avatar-button-text-size);
+}

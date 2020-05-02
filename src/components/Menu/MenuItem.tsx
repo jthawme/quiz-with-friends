@@ -56,7 +56,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   if (to) {
     return (
-      <Link className={cls} to={to} disabled={disabled}>
+      <Link className={cls} to={to}>
         {innerContent}
       </Link>
     );

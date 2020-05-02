@@ -21,8 +21,23 @@ export const MenuIconButton: React.FC = () => {
 
 export const HeaderBlock: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [name, setName] = useState<string>("User Name");
+  const [image, setImage] = useState<string | undefined>(undefined);
 
-  return <Header menuOpen={open} onToggleMenu={(): void => setOpen(!open)} />;
+  return (
+    <Header
+      menuOpen={open}
+      onToggleMenu={(): void => setOpen(!open)}
+      rightSlot={
+        <UserArea
+          name={name}
+          image={image}
+          onChangeName={(newName): void => setName(newName)}
+          onChangeImage={(newImage): void => setImage(newImage)}
+        />
+      }
+    />
+  );
 };
 
 export const UserAreaBlock: React.FC = () => {
