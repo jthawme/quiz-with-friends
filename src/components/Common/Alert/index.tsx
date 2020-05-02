@@ -49,6 +49,7 @@ const Alert: React.FC<AlertProps> = ({
     return (): void => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const internalCloseButtonProps = useMemo(() => {

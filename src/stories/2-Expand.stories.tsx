@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withKnobs, boolean } from "@storybook/addon-knobs";
-import { ExpandDiv } from "../components/Expand";
+import { ExpandDiv } from "../components/Common/Expand";
 
 import "normalize.css";
 import "../styles/global.scss";

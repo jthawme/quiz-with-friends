@@ -1,4 +1,4 @@
-import { icons, IconList } from "../components/Icon";
+import { icons, IconList } from "../components/Common/Icon";
 import { select } from "@storybook/addon-knobs";
 
 const options: { [key: string]: IconList } = Object.keys(icons).reduce(

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import classNames from "classnames";
+import { Link } from "@reach/router";
 
 import { IconList, Icon } from "../Icon";
 
@@ -14,6 +15,7 @@ export interface ButtonProps
   icon?: IconList;
   buttonType?: ButtonType;
   reverse?: boolean;
+  to?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -23,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   buttonType = "normal",
   type = "button",
   reverse = false,
+  to,
   ...props
 }: ButtonProps) => {
   const cls = classNames(
@@ -33,14 +36,31 @@ const Button: React.FC<ButtonProps> = ({
     className,
   );
 
+  const inner = useMemo(
+    () => (
+      <>
+        {icon && (
+          <span className={styles.icon}>
+            <Icon name={icon} />
+          </span>
+        )}
+        <span className={styles.text}>{children}</span>
+      </>
+    ),
+    [children, icon],
+  );
+
+  if (to) {
+    return (
+      <Link className={cls} to={to}>
+        {inner}
+      </Link>
+    );
+  }
+
   return (
     <button type={type} className={cls} {...props}>
-      {icon && (
-        <span className={styles.icon}>
-          <Icon name={icon} />
-        </span>
-      )}
-      <span className={styles.text}>{children}</span>
+      {inner}
     </button>
   );
 };

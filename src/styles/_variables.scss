@@ -27,10 +27,13 @@
   }
 
   --size-page-margin: var(--size-unit-4);
+  --size-page-max-width: 950px;
 
   @media screen and (min-width: 768px) {
     --size-page-margin: var(--size-unit-8);
   }
+
+  --size-header: calc((var(--size-page-margin) * 2) + 40px);
 
   --radii-md: 4px;
   --radii-lg: 10px;

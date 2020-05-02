@@ -14,17 +14,17 @@ export default {
 
 const MENU_ITEMS: MenuItemListItem[] = [
   {
-    text: "Home",
+    children: "Home",
     icon: "smile",
     to: "/",
   },
   {
-    text: "Some Link",
+    children: "Some Link",
     icon: "shield",
     to: "/some",
     items: [
       {
-        text: "Some sub link",
+        children: "Some sub link",
         icon: "settings",
         onClick: action("Click item"),
         type: "negative",
@@ -38,7 +38,11 @@ export const Standard: React.FC = () => {
 };
 
 export const MenuItemLink: React.FC = () => {
-  return <MenuItem text="Menu Item" icon="smile" to="/" />;
+  return (
+    <MenuItem icon="smile" to="/">
+      Menu Item
+    </MenuItem>
+  );
 };
 
 export const Section: React.FC = () => {

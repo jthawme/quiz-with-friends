@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { Link } from "@reach/router";
 import classNames from "classnames";
 
-import { Icon, IconList } from "../Icon";
+import { Icon, IconList } from "../Common/Icon";
 
 import styles from "./MenuItem.module.scss";
 

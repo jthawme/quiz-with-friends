@@ -20,10 +20,14 @@
 
   border-radius: var(--icon-button-border-radius);
 
-  border: var(--icon-button-border-width) solid var(--icon-button-border-color);
+  border: 0;
 
   svg {
     width: var(--icon-button-inner-size);
     height: var(--icon-button-inner-size);
   }
+}
+
+.border {
+  border: var(--icon-button-border-width) solid var(--icon-button-border-color);
 }

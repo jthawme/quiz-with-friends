@@ -45,7 +45,13 @@ export const UserAreaBlock: React.FC = () => {
     <div
       style={{ display: "flex", justifyContent: "flex-end", width: "250px" }}
     >
-      <UserArea name="User 2020" image={false} />
+      <UserArea
+        name="User 2020"
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onChangeName={(): void => {}}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onChangeImage={(): void => {}}
+      />
     </div>
   );
 };

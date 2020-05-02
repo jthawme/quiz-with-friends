@@ -1,7 +1,7 @@
 import React from "react";
 import { withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
-import { Input } from "../components/Input";
+import { Input } from "../components/Common/Input";
 
 import "normalize.css";
 import "../styles/global.scss";

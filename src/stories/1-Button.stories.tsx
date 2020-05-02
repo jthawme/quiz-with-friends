@@ -1,8 +1,8 @@
 import React from "react";
 import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
-import { Button } from "../components/Button";
-import { IconButton } from "../components/IconButton";
+import { Button } from "../components/Common/Button";
+import { IconButton } from "../components/Common/IconButton";
 
 import "../styles/global.scss";
 import { iconSelect } from "./_utils";

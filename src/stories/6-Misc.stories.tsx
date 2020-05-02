@@ -4,9 +4,9 @@ import { withKnobs, number, text } from "@storybook/addon-knobs";
 import "normalize.css";
 import "../styles/global.scss";
 import { DotBackground } from "../components/DotBackground";
-import { Title } from "../components/Title";
-import { Button } from "../components/Button";
-import { Alert } from "../components/Alert";
+import { Title } from "../components/Common/Title";
+import { Button } from "../components/Common/Button";
+import { Alert } from "../components/Common/Alert";
 import { action } from "@storybook/addon-actions";
 
 export default {

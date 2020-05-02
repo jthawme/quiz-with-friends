@@ -106,7 +106,15 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
         };
       }
     },
-    [initialClassName, expandedClassName, duration, easing, absolute],
+    [
+      onBefore,
+      initialClassName,
+      expandedClassName,
+      absolute,
+      duration,
+      easing,
+      onAfter,
+    ],
   );
 
   useLayoutEffect(() => {

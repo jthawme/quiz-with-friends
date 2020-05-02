@@ -3,7 +3,10 @@
 
   z-index: 10;
 
+  width: 100%;
+
   display: grid;
+  align-items: center;
 
   grid-template-columns: min-content 1fr min-content;
 
@@ -11,6 +14,8 @@
 }
 
 .left {
+  position: relative;
+  top: 0.5px;
 }
 
 .logo {
@@ -18,5 +23,5 @@
 }
 
 .right {
-  align-self: flex-end;
+  justify-self: flex-end;
 }

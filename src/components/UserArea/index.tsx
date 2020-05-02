@@ -7,10 +7,10 @@ import React, {
 } from "react";
 
 import styles from "./UserArea.module.scss";
-import { ExpandDiv } from "../Expand";
+import { ExpandDiv } from "../Common/Expand";
 import { MenuItem } from "../Menu";
-import { Button } from "../Button";
-import { AvatarButton } from "../AvatarButton";
+import { Button } from "../Common/Button";
+import { AvatarButton } from "../Common/AvatarButton";
 
 interface UserAreaProps {
   name: string;
@@ -116,7 +116,7 @@ const UserArea: React.FC<UserAreaProps> = ({
     } else {
       document.removeEventListener("click", documentClickAway);
     }
-  }, [open]);
+  }, [documentClickAway, open]);
 
   useEffect(() => {
     if (disabled) {

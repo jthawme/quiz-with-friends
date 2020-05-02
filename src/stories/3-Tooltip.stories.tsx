@@ -1,6 +1,6 @@
 import React from "react";
 import { withKnobs } from "@storybook/addon-knobs";
-import { Tooltip } from "../components/Tooltip";
+import { Tooltip } from "../components/Common/Tooltip";
 
 import "normalize.css";
 import "../styles/global.scss";

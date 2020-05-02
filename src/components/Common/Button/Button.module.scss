@@ -9,6 +9,7 @@
   --button-margin: 0;
 
   --button-radius: var(--radii-md);
+  --button-font-weight: var(--font-weight-normal);
 
   --button-icon-size: var(--size-unit-5);
   --button-icon-margin: 0 var(--size-unit-2) 0 0;
@@ -23,11 +24,14 @@
 
   padding: var(--button-padding);
   margin: var(--button-margin);
+  font-weight: var(--button-font-weight);
 
   border: 0;
   border-radius: var(--button-radius);
 
   font-size: var(--button-font-size);
+
+  text-decoration: none;
 }
 
 .interaction {

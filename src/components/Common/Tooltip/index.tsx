@@ -33,15 +33,18 @@ const Tooltip: React.FC<TooltipProps> = ({ children }: TooltipProps) => {
     setTransitioning(true);
 
     document.removeEventListener("click", documentClickAway);
-  }, []);
+  }, [documentClickAway]);
 
-  const onAfterExpand = useCallback((state: boolean) => {
-    setTransitioning(false);
+  const onAfterExpand = useCallback(
+    (state: boolean) => {
+      setTransitioning(false);
 
-    if (state) {
-      document.addEventListener("click", documentClickAway);
-    }
-  }, []);
+      if (state) {
+        document.addEventListener("click", documentClickAway);
+      }
+    },
+    [documentClickAway],
+  );
 
   const onSetRef = useCallback(
     (el) => {
@@ -70,6 +73,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children }: TooltipProps) => {
           icon={isOpen ? "x" : "help"}
           onClick={(): void => setIsOpen(!isOpen)}
           buttonType="inherit"
+          withBorder={false}
         />
         <div
           className={`${styles.content} ${

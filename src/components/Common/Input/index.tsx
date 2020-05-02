@@ -1,27 +1,36 @@
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import classNames from "classnames";
 
 import styles from "./Input.module.scss";
-import { Icon } from "../Icon";
 import { IconButton } from "../IconButton";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
-  onSubmit?: () => void;
+  onTextSubmit?: (value?: string) => void;
   inputSize?: "normal" | "large";
+  validateFunc?: (value?: string) => boolean;
 }
+
+const defaultValidateFunc = (value?: string): boolean => {
+  return !!(value && value.length > 0);
+};
 
 const Input: React.FC<InputProps> = ({
   value,
-  onSubmit,
+  onTextSubmit,
   onChange,
   inputSize = "normal",
   maxLength,
+  validateFunc = defaultValidateFunc,
   ...props
 }: InputProps) => {
-  const [internalValue, setInternalValue] = useState<
-    string | number | string[] | undefined
-  >(value);
+  const [internalValue, setInternalValue] = useState<string | undefined>(
+    (value || "").toString(),
+  );
+
+  const isValid = useMemo<boolean>(() => {
+    return validateFunc(internalValue);
+  }, [internalValue, validateFunc]);
 
   const onInternalChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,10 +47,10 @@ const Input: React.FC<InputProps> = ({
     styles.wrapper,
     [styles[inputSize]],
     {
-      [styles.dirty]: !!internalValue,
+      [styles.dirty]: !!internalValue && isValid,
     },
     {
-      [styles.hasSubmit]: !!onSubmit,
+      [styles.hasSubmit]: !!onTextSubmit,
     },
   );
 
@@ -56,8 +65,15 @@ const Input: React.FC<InputProps> = ({
           {...props}
         />
 
-        {onSubmit && (
-          <IconButton className={styles.button} type="submit" icon="check" />
+        {onTextSubmit && (
+          <IconButton
+            onClick={(): void => {
+              onTextSubmit(internalValue);
+            }}
+            className={styles.button}
+            type="submit"
+            icon="check"
+          />
         )}
       </div>
       {maxLength && (
