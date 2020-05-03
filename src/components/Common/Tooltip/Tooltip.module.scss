@@ -1,8 +1,12 @@
 :root {
   --tooltip-background-color: var(--color-accent-1-highlight);
   --tooltip-foreground-color: var(--color-accent-1);
-  --tooltip-expand-width: 250px;
+  --tooltip-expand-width: 180px;
   --tooltip-expand-height: 150px;
+
+  @media screen and (min-width: 768px) {
+    --tooltip-expand-width: 250px;
+  }
 }
 
 .wrapper {
@@ -24,6 +28,8 @@
 
   background-color: var(--tooltip-background-color);
   color: var(--tooltip-foreground-color);
+
+  overflow: hidden;
 
   transition: {
     property: border-radius;
@@ -67,14 +73,13 @@
 
 .content {
   opacity: 0;
-  width: var(--tooltip-expand-width);
 
   padding: var(--size-unit-2) var(--size-unit-2) var(--size-unit-2)
     var(--icon-button-size);
 
   transition: {
     property: opacity;
-    duration: 300ms;
+    duration: 150ms;
   }
 
   pointer-events: none;

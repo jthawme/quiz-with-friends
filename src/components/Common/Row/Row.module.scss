@@ -1,0 +1,7 @@
+:root {
+  --row-margin: var(--size-unit-8) 0 var(--size-unit-4);
+}
+
+.row {
+  margin: var(--row-margin);
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs, number, text } from "@storybook/addon-knobs";
+import { withKnobs, number, text, select } from "@storybook/addon-knobs";
 
 import "normalize.css";
 import "../styles/global.scss";
@@ -8,6 +8,9 @@ import { Title } from "../components/Common/Title";
 import { Button } from "../components/Common/Button";
 import { Alert } from "../components/Common/Alert";
 import { action } from "@storybook/addon-actions";
+import { Tile } from "../components/Common/Tile";
+import { iconSelect } from "./_utils";
+import { TileGroup } from "../components/Common/Tile/TileGroup";
 
 export default {
   title: "Misc",
@@ -44,5 +47,21 @@ export const AlertBlock: React.FC = () => {
         serivce worker! That&apos;d be good
       </p>
     </Alert>
+  );
+};
+
+export const TileBlock: React.FC = () => {
+  const icon = iconSelect("Icon");
+  const textString = text("Label", "General Tile");
+  const type = select("Type", ["one", "two", "three"], "one");
+
+  return (
+    <TileGroup>
+      <Tile to="/" text={textString} icon={icon} type={type} />
+      <Tile to="/" text="Next tile" icon="plus-circle" type="two" />
+      <Tile to="/" text="Another tile" icon="plus-circle" type="three" />
+      <Tile to="/" text="Another tile" icon="plus-circle" type="one" />
+      <Tile to="/" text="Another tile" icon="plus-circle" type="two" />
+    </TileGroup>
   );
 };

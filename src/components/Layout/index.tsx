@@ -13,13 +13,27 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
   const menuItems = useMemo<MenuItemObject[]>(() => {
-    return [
+    const baseItems: MenuItemObject[] = [
       {
         children: "Create a Quiz",
         icon: "plus-circle",
         to: "/create",
       },
+      {
+        children: "About",
+        icon: "info",
+        to: "/about",
+      },
+      {
+        children: "Share",
+        icon: "share",
+        onClick: (): void => {
+          console.log("share go now");
+        },
+      },
     ];
+
+    return baseItems;
   }, []);
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -50,13 +64,24 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
         }
       />
       <main className={styles.main}>{children}</main>
-      <footer>footer</footer>
       <MenuSlider
         className={styles.menu}
         open={menuOpen}
         onClose={(): void => setMenuOpen(false)}
       >
-        <Menu items={menuItems} />
+        <div className={styles.items}>
+          <Menu items={menuItems} />
+        </div>
+        <div className={styles.credit}>
+          Made by ya boi{" "}
+          <a
+            href="https://twitter.com/jthawme"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @jthawme
+          </a>
+        </div>
       </MenuSlider>
     </>
   );

@@ -96,13 +96,18 @@ const UserArea: React.FC<UserAreaProps> = ({
       if (elRef.current !== null) {
         if (e.target !== elRef.current && !elRef.current.contains(e.target)) {
           setOpen(false);
-          setEditName(false);
           setInternalName(name);
         }
       }
     },
     [name],
   );
+
+  const onAfterExpand = useCallback((state: boolean) => {
+    if (!state) {
+      setEditName(false);
+    }
+  }, []);
 
   const getInputRef = useCallback((ref) => {
     if (ref) {
@@ -139,6 +144,7 @@ const UserArea: React.FC<UserAreaProps> = ({
         expandedClassName={styles.dropdownOpen}
         initialClassName={styles.dropdownClosed}
         className={styles.dropdown}
+        onAfter={onAfterExpand}
         absolute
       >
         <div className={styles.content}>

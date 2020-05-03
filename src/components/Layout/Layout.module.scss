@@ -1,6 +1,40 @@
+.main {
+  position: relative;
+
+  z-index: 1;
+
+  flex-grow: 1;
+}
+
 .menu {
+  display: flex;
+
+  flex-direction: column;
   padding: var(--size-header) var(--size-page-margin) var(--size-page-margin);
 }
 
-.main {
+.items {
+  display: flex;
+
+  align-items: center;
+  flex-grow: 1;
+
+  padding-bottom: var(--size-unit-20);
+}
+
+.credit {
+  color: var(--color-text-light);
+
+  border-top: 2px solid var(--color-text-v-light);
+
+  padding: var(--size-unit-6) var(--size-unit-2);
+
+  font-size: var(--font-size-small);
+
+  text-align: center;
+
+  a {
+    color: var(--color-accent-1);
+    text-decoration: none;
+  }
 }

@@ -18,12 +18,15 @@ import {
   Image,
   Smile,
   Edit,
+  Share2,
 } from "react-feather";
+import { ReactComponent as Help } from "./extra/help.svg";
 
 export const icons = {
   plus: Plus,
   "plus-circle": PlusCircle,
-  help: HelpCircle,
+  help: Help,
+  "help-circle": HelpCircle,
   shield: Shield,
   check: Check,
   x: X,
@@ -39,18 +42,20 @@ export const icons = {
   image: Image,
   smile: Smile,
   edit: Edit,
+  share: Share2,
 };
 
 export type IconList = keyof typeof icons;
 
 interface IconProps {
   name: IconList;
+  size?: number;
 }
 
-const Icon: React.FC<IconProps> = ({ name }: IconProps) => {
+const Icon: React.FC<IconProps> = ({ name, size = 24 }: IconProps) => {
   const El = icons[name];
 
-  return <El />;
+  return <El size={size} />;
 };
 
 export { Icon };

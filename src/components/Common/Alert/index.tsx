@@ -14,7 +14,7 @@ interface AlertProps {
   initialDelay?: number;
   canClose?: boolean;
 
-  closeButtonProps?: ButtonProps;
+  closeButtonProps?: Partial<ButtonProps>;
 
   onClose?: () => void;
 

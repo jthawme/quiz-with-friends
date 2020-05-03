@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Link } from "@reach/router";
 import { MenuIcon } from "../Menu/MenuIcon";
 
 import { ReactComponent as Logo } from "../../images/logo.svg";
@@ -21,9 +22,9 @@ const Header: React.FC<HeaderProps> = ({
       <div className={styles.left}>
         <MenuIcon open={menuOpen} onClick={onToggleMenu} />
       </div>
-      <div className={styles.logo}>
+      <Link to="/" className={styles.logo}>
         <Logo />
-      </div>
+      </Link>
       <div className={styles.right}>{rightSlot || null}</div>
     </header>
   );

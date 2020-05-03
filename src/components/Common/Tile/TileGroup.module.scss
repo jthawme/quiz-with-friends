@@ -1,0 +1,12 @@
+:root {
+  --tile-group-amount: 4;
+  --tile-group-gap: var(--size-unit-8);
+}
+
+.pool {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  gap: var(--tile-group-gap);
+}

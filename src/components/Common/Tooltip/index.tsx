@@ -16,7 +16,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children }: TooltipProps) => {
   const elRef = useRef<HTMLDivElement | null>(null);
 
   const isRight = useMemo(() => {
-    return window.innerWidth < bounds.x + 250;
+    return window.innerWidth < bounds.x + 300;
   }, [bounds.x]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [transitioning, setTransitioning] = useState<boolean>(false);
@@ -54,6 +54,10 @@ const Tooltip: React.FC<TooltipProps> = ({ children }: TooltipProps) => {
     [ref],
   );
 
+  const onClick = useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
+
   return (
     <span
       ref={onSetRef}
@@ -71,7 +75,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children }: TooltipProps) => {
         <IconButton
           className={styles.button}
           icon={isOpen ? "x" : "help"}
-          onClick={(): void => setIsOpen(!isOpen)}
+          onClick={onClick}
           buttonType="inherit"
           withBorder={false}
         />

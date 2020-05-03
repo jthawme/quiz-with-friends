@@ -1,11 +1,23 @@
 :root {
   --title-margin: var(--size-unit-4) 0 var(--size-unit-6);
-  --title-font-size: var(--font-size-x-large);
-  --title-help-margin: var(--size-unit-1) var(--size-unit-2) 0;
+  --title-font-size: var(--font-size-large);
+  --title-help-margin: var(--size-unit-1) 0 0 var(--size-unit-2);
+
+  @media screen and (min-width: 768px) {
+    --title-help-margin: var(--size-unit-1) var(--size-unit-2) 0;
+  }
 }
 
 .wrapper {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
   margin: var(--title-margin);
+
+  @media screen and (min-width: 768px) {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
 }
 
 .wrapper,
@@ -16,7 +28,19 @@
 }
 
 .content {
+  display: flex;
+
+  width: 100%;
+
+  justify-content: space-between;
+
   flex-grow: 1;
+
+  @media screen and (min-width: 768px) {
+    width: auto;
+
+    justify-content: flex-start;
+  }
 }
 
 .title {
@@ -33,7 +57,11 @@
 }
 
 .main {
-  --title-font-size: var(--font-size-x-large);
+  --title-font-size: var(--font-size-large);
+
+  @media screen and (min-width: 768px) {
+    --title-font-size: var(--font-size-x-large);
+  }
 }
 
 .sub {
@@ -46,4 +74,6 @@
 
 .right {
   flex-grow: 0;
+
+  margin-top: var(--size-unit-2);
 }

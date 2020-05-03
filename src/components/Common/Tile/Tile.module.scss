@@ -1,0 +1,101 @@
+:root {
+  --tile-background-color: var(--color-accent-2-highlight);
+  --tile-foreground-color: var(--color-accent-2);
+
+  --tile-radius: var(--radii-lg);
+  --tile-padding: var(--size-unit-6);
+  --tile-with-icon-padding: var(--size-unit-6) var(--size-unit-6)
+    calc(var(--size-unit-6) + 5%);
+  --tile-icon-padding: var(--size-unit-6);
+}
+
+.tile {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  padding-bottom: 100%;
+
+  color: var(--tile-foreground-color);
+  background-color: var(--tile-background-color);
+
+  border-radius: var(--tile-radius);
+
+  overflow: hidden;
+}
+
+.content {
+  position: absolute;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  padding: var(--tile-padding);
+}
+
+.one {
+  --tile-background-color: var(--color-accent-1-highlight);
+  --tile-foreground-color: var(--color-accent-1);
+}
+
+.two {
+  --tile-background-color: var(--color-accent-2-highlight);
+  --tile-foreground-color: var(--color-accent-2);
+}
+
+.three {
+  --tile-background-color: var(--color-accent-3-highlight);
+  --tile-foreground-color: var(--color-accent-3);
+}
+
+.text {
+  display: flex;
+
+  align-items: center;
+  flex-grow: 1;
+
+  text-align: center;
+}
+
+.icon {
+  position: absolute;
+
+  bottom: 0;
+  left: 50%;
+
+  transform: translate3d(-50%, 0, 0);
+
+  padding: var(--tile-icon-padding);
+}
+
+.withIcon .content {
+  padding: var(--tile-with-icon-padding);
+}
+
+.content,
+.icon {
+  transition: {
+    property: transform;
+    duration: 0.15s;
+  }
+}
+
+.tile:hover .content,
+.tile:focus .content {
+  transform: scale(1.1);
+}
+
+.tile:hover .icon,
+.tile:focus .icon {
+  transform: translate3d(-50%, -20%, 0);
+}

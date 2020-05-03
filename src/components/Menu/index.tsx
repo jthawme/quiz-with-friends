@@ -11,14 +11,16 @@ export interface MenuItemListItem extends MenuItemObject {
 interface MenuProps {
   items: MenuItemListItem[];
   tagName?: keyof JSX.IntrinsicElements;
+  className?: string;
 }
 
 const Menu: React.FC<MenuProps> = ({
   items,
   tagName: El = "nav",
+  className,
 }: MenuProps) => {
   return (
-    <El className={styles.menu}>
+    <El className={`${styles.menu} ${className || ""}`}>
       {items.map((item, index) => (
         <React.Fragment key={`${index}-${item.to}`}>
           <MenuItem {...item} />
