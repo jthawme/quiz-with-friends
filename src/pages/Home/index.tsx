@@ -11,12 +11,13 @@ import { DotBackground } from "../../components/DotBackground";
 import { TileGroup } from "../../components/Common/Tile/TileGroup";
 import { Tile } from "../../components/Common/Tile";
 import { Alert } from "../../components/Common/Alert";
+import { RouteComponentProps } from "@reach/router";
 
 const validateRoom = (value?: string): boolean => {
   return !!(value && value.length === 5);
 };
 
-const Home: React.FC = () => {
+const Home: React.FC<RouteComponentProps> = () => {
   const isTablet = useMediaQuery({
     query: "(min-width: 768px)",
   });

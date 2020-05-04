@@ -90,10 +90,10 @@ h3 {
   @extend .text-inline-heading;
 }
 
+p {
+  line-height: 1.5;
+}
+
 #root {
-  display: flex;
-
-  flex-direction: column;
-
   min-height: 100vh;
 }

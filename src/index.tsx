@@ -1,20 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { Router } from "@reach/router";
+
 import "normalize.css";
 import "./styles/global.scss";
 
 import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
+import { About } from "./pages/About";
 // import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
     <Layout>
-      <Home />
+      <Router>
+        <Home path="/" />
+        <About path="/about" />
+      </Router>
     </Layout>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

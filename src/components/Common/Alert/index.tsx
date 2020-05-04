@@ -30,13 +30,13 @@ const initialCloseButtonProps: ButtonProps = {
 const Alert: React.FC<AlertProps> = ({
   children,
   type = "normal",
-  initialDelay = 500,
+  initialDelay = 0,
   closeButtonProps,
   onClose,
   unmountOnClose = true,
   canClose = true,
 }: AlertProps) => {
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(initialDelay === 0);
   const [mount, setMount] = useState<boolean>(true);
 
   const cls = classNames(styles.wrapper, styles[type]);

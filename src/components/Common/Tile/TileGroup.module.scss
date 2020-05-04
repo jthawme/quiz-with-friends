@@ -1,12 +1,16 @@
 :root {
   --tile-group-amount: 4;
-  --tile-group-gap: var(--size-unit-8);
+  --tile-group-gap: var(--size-unit-4);
+
+  @media screen and (min-width: 768px) {
+    --tile-group-gap: var(--size-unit-8);
+  }
 }
 
 .pool {
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 
   gap: var(--tile-group-gap);
 }

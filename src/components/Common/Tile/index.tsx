@@ -33,7 +33,7 @@ const Tile: React.FC<TileProps> = ({
   return (
     <Link to={to} className={cls}>
       <span className={styles.content}>
-        <span className={`${styles.text} text-sub-heading`}>{text}</span>
+        <span className={styles.text}>{text}</span>
         {icon && (
           <span className={styles.icon}>
             <Icon name={icon} size={24} />

@@ -1,0 +1,37 @@
+.section {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  a {
+    color: var(--color-accent-1);
+
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .title,
+  p {
+    grid-column: 1 / span 4;
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(12, 1fr);
+
+    .title,
+    p {
+      grid-column: 1 / span 8;
+    }
+
+    &:nth-child(2n) {
+      .title,
+      p {
+        grid-column: 5 / span 8;
+      }
+    }
+  }
+}
