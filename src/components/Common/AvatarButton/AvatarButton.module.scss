@@ -7,6 +7,7 @@
   --avatar-button-border-color: white;
 
   --avatar-button-text-size: var(--font-size-small);
+  --avatar-button-text-weight: var(--font-weight-bold);
 }
 
 .wrapper {
@@ -31,4 +32,5 @@
 
 .content {
   font-size: var(--avatar-button-text-size);
+  font-weight: var(--avatar-button-text-weight);
 }

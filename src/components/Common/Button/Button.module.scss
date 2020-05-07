@@ -71,6 +71,10 @@
     opacity: 0.5;
   }
 
+  &[disabled] {
+    cursor: default;
+  }
+
   &:active:after {
     opacity: 0.75;
   }
