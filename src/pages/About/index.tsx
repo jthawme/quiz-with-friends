@@ -10,7 +10,7 @@ import { Title } from "../../components/Common/Title";
 const About: React.FC<RouteComponentProps> = () => {
   return (
     <>
-      <DotBackground amount={10} />
+      <DotBackground amount={25} />
       <Page>
         <Row id="about" className={styles.section}>
           <Title className={styles.title} text="About" />

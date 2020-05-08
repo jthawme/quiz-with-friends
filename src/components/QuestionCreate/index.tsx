@@ -1,4 +1,4 @@
-import React, { useCallback, InputHTMLAttributes } from "react";
+import React, { useCallback } from "react";
 
 import { AvatarButton } from "../Common/AvatarButton";
 import { Input } from "../Common/Input";
@@ -12,11 +12,11 @@ import { Button } from "../Common/Button";
 
 interface QuestionCreateProps extends Question {
   num: number;
-  onQuestionUpdate: (question: string) => void;
-  onAnswerUpdate: (answer: string, id: string) => void;
-  onAnswerAdd: () => void;
-  onAnswerRemove: (id: string) => void;
-  onAnswerCorrect: (id: string) => void;
+  onQuestionUpdate: (id: string, question: string) => void;
+  onAnswerUpdate: (id: string, answer: string, answerId: string) => void;
+  onAnswerAdd: (id: string) => void;
+  onAnswerRemove: (id: string, answerId: string) => void;
+  onAnswerCorrect: (id: string, answerId: string) => void;
   maxAnswers?: number;
 }
 
@@ -35,9 +35,9 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
 }: QuestionCreateProps) => {
   const internalQuestionUpdate = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      onQuestionUpdate(e.target.value);
+      onQuestionUpdate(id, e.target.value);
     },
-    [onQuestionUpdate],
+    [onQuestionUpdate, id],
   );
 
   const internalAnswerUpdate = useCallback(
@@ -45,10 +45,10 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
       const entityId = e.target.dataset.entity;
 
       if (entityId !== undefined) {
-        onAnswerUpdate(e.target.value, entityId);
+        onAnswerUpdate(id, e.target.value, entityId);
       }
     },
-    [onAnswerUpdate],
+    [id, onAnswerUpdate],
   );
 
   const internalAnswerRemove = useCallback(
@@ -56,10 +56,10 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
       const entityId = e.target.dataset.entity;
 
       if (entityId !== undefined) {
-        onAnswerRemove(entityId);
+        onAnswerRemove(id, entityId);
       }
     },
-    [onAnswerRemove],
+    [id, onAnswerRemove],
   );
 
   const internalAnswerCorrect = useCallback(
@@ -67,11 +67,15 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
       const entityId = e.target.dataset.entity;
 
       if (entityId !== undefined) {
-        onAnswerCorrect(entityId);
+        onAnswerCorrect(id, entityId);
       }
     },
-    [onAnswerCorrect],
+    [id, onAnswerCorrect],
   );
+
+  const internalAnswerAdd = useCallback(() => {
+    onAnswerAdd(id);
+  }, [id, onAnswerAdd]);
 
   return (
     <div id={id} className={styles.wrapper}>
@@ -146,7 +150,7 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
             <Button
               buttonType="normal"
               icon="plus"
-              onClick={onAnswerAdd}
+              onClick={internalAnswerAdd}
               disabled={answers.length >= maxAnswers}
             >
               Add Answer

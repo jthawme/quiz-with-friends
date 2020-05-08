@@ -25,8 +25,8 @@ const DotBackground: React.FC<DotBackgroundProps> = ({
           key={index}
           className={styles.dot}
           style={{
-            left: `${p.x * 100}%`,
-            top: `${p.y * 100}%`,
+            left: `${p.x * 1000}px`,
+            top: `${p.y * 4000}px`,
           }}
         />
       ))}

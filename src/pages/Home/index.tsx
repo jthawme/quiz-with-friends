@@ -28,7 +28,7 @@ const Home: React.FC<RouteComponentProps> = () => {
 
   return (
     <>
-      <DotBackground amount={10} />
+      <DotBackground amount={25} />
       <Page>
         <Alert
           type="negative"

@@ -23,6 +23,9 @@
 
 .num {
   --avatar-button-text-size: var(--font-size-normal);
+  display: flex;
+
+  flex-direction: column;
 
   grid-column: 1 / span 1;
   grid-row: 1 / -1;
@@ -32,6 +35,8 @@
 
 .content {
   grid-column: 2 / span 7;
+
+  padding-bottom: var(--size-unit-12);
 }
 
 .row {

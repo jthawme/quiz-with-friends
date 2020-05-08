@@ -9,6 +9,7 @@ import "./styles/global.scss";
 import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
+import { Create } from "./pages/Create";
 // import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Router>
         <Home path="/" />
         <About path="/about" />
+        <Create path="/create" />
       </Router>
     </Layout>
   </React.StrictMode>,

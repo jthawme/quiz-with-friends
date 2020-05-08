@@ -1,0 +1,22 @@
+.topRow {
+  display: grid;
+
+  grid-template-columns: repeat(8, 1fr);
+  column-gap: var(--size-unit-4);
+
+  margin: var(--size-unit-12) 0;
+}
+
+.titleBlock {
+  grid-column: 1 / span 4;
+}
+
+.codeBlock {
+  grid-column: 6 / span 3;
+}
+
+.addQuestionBlock {
+  --menu-item-foreground-color: var(--color-text-light);
+
+  padding: var(--size-unit-4) var(--size-unit-2);
+}

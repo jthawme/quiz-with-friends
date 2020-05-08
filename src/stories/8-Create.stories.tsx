@@ -25,10 +25,14 @@ export const QuestionSlice: React.FC = () => {
   ]);
   const [correct, setCorrect] = useState<string>(initialAnswerRef.current);
 
+  const updateQuestion = useCallback((id: string, questionText: string) => {
+    setQuestionText(questionText);
+  }, []);
+
   const updateAnswer = useCallback(
-    (newAnswer: string, id: string) => {
+    (id: string, newAnswer: string, answerId: string) => {
       const currentAnswers = answers.slice();
-      const index = currentAnswers.findIndex((a) => a.id === id);
+      const index = currentAnswers.findIndex((a) => a.id === answerId);
       currentAnswers[index].text = newAnswer;
       setAnswers(currentAnswers);
     },
@@ -46,26 +50,22 @@ export const QuestionSlice: React.FC = () => {
   }, [answers]);
 
   const removeAnswer = useCallback(
-    (id: string) => {
+    (id: string, answerId: string) => {
       const currentAnswers = answers.slice();
-      const index = currentAnswers.findIndex((a) => a.id === id);
-      const currentId = currentAnswers[index].id;
-      console.log(index);
+      const index = currentAnswers.findIndex((a) => a.id === answerId);
       currentAnswers.splice(index, 1);
       setAnswers(currentAnswers);
 
-      if (currentId === correct) {
+      if (answerId === correct) {
         setCorrect(currentAnswers[0].id);
       }
     },
     [answers, correct],
   );
 
-  const correctAnswer = useCallback((id: string) => {
-    setCorrect(id);
+  const correctAnswer = useCallback((id: string, answerId: string) => {
+    setCorrect(answerId);
   }, []);
-
-  console.log(answers);
 
   return (
     <QuestionCreate
@@ -74,7 +74,7 @@ export const QuestionSlice: React.FC = () => {
       text={questionText}
       correct={correct}
       num={1}
-      onQuestionUpdate={setQuestionText}
+      onQuestionUpdate={updateQuestion}
       onAnswerUpdate={updateAnswer}
       onAnswerAdd={addAnswer}
       onAnswerRemove={removeAnswer}
