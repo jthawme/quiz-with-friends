@@ -1,56 +1,156 @@
-import React from "react";
+import React, { useCallback, InputHTMLAttributes } from "react";
 
-import styles from "./QuestionCreate.module.scss";
 import { AvatarButton } from "../Common/AvatarButton";
 import { Input } from "../Common/Input";
 import { IconButton } from "../Common/IconButton";
 import { Title } from "../Common/Title";
 
-const QuestionCreate = () => {
+import { Question } from "../../core/types/question";
+
+import styles from "./QuestionCreate.module.scss";
+import { Button } from "../Common/Button";
+
+interface QuestionCreateProps extends Question {
+  num: number;
+  onQuestionUpdate: (question: string) => void;
+  onAnswerUpdate: (answer: string, id: string) => void;
+  onAnswerAdd: () => void;
+  onAnswerRemove: (id: string) => void;
+  onAnswerCorrect: (id: string) => void;
+  maxAnswers?: number;
+}
+
+const QuestionCreate: React.FC<QuestionCreateProps> = ({
+  id,
+  text,
+  num,
+  answers,
+  correct,
+  onQuestionUpdate,
+  onAnswerAdd,
+  onAnswerUpdate,
+  onAnswerRemove,
+  onAnswerCorrect,
+  maxAnswers = 5,
+}: QuestionCreateProps) => {
+  const internalQuestionUpdate = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onQuestionUpdate(e.target.value);
+    },
+    [onQuestionUpdate],
+  );
+
+  const internalAnswerUpdate = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const entityId = e.target.dataset.entity;
+
+      if (entityId !== undefined) {
+        onAnswerUpdate(e.target.value, entityId);
+      }
+    },
+    [onAnswerUpdate],
+  );
+
+  const internalAnswerRemove = useCallback(
+    (e) => {
+      const entityId = e.target.dataset.entity;
+
+      if (entityId !== undefined) {
+        onAnswerRemove(entityId);
+      }
+    },
+    [onAnswerRemove],
+  );
+
+  const internalAnswerCorrect = useCallback(
+    (e) => {
+      const entityId = e.target.dataset.entity;
+
+      if (entityId !== undefined) {
+        onAnswerCorrect(entityId);
+      }
+    },
+    [onAnswerCorrect],
+  );
+
   return (
-    <div className={styles.wrapper}>
+    <div id={id} className={styles.wrapper}>
       <div className={styles.num}>
-        <AvatarButton text="1" buttonType="negative" notButton disabled />
+        <AvatarButton
+          text={num.toString()}
+          buttonType="negative"
+          notButton
+          disabled
+        />
+
+        <div className={styles.line} />
       </div>
 
       <div className={styles.content}>
         <div className={styles.row}>
           <Title className={styles.title} text="Question" type="inline" />
           <div className={styles.inner}>
-            <Input inputSize="normal" maxLength={200} />
-          </div>
-        </div>
-        <div className={`${styles.row} ${styles.withActions}`}>
-          <Title className={styles.title} text="Answers" type="inline" />
-
-          <div className={styles.inner}>
-            <Input inputSize="normal" maxLength={100} />
-          </div>
-          <div className={styles.actions}>
-            <ul className={styles.actionItems}>
-              <li>
-                <IconButton icon="trash" buttonType="negative" />
-              </li>
-              <li>
-                <IconButton icon="check" buttonType="positive" />
-              </li>
-            </ul>
+            <Input
+              inputSize="normal"
+              maxLength={200}
+              value={text}
+              onChange={internalQuestionUpdate}
+            />
           </div>
         </div>
 
-        <div className={`${styles.row} ${styles.withActions}`}>
-          <div className={styles.inner}>
-            <Input inputSize="normal" maxLength={100} />
+        {answers.map((val, index) => (
+          <div key={index} className={`${styles.row} ${styles.withActions}`}>
+            {index === 0 && (
+              <Title className={styles.title} text="Answers" type="inline" />
+            )}
+
+            <div className={styles.inner}>
+              <Input
+                inputSize="normal"
+                maxLength={100}
+                value={val.text}
+                data-entity={val.id}
+                onChange={internalAnswerUpdate}
+              />
+            </div>
+            <div className={styles.actions}>
+              <ul className={styles.actionItems}>
+                <li>
+                  <IconButton
+                    icon="trash"
+                    buttonType="negative"
+                    disabled={answers.length === 1}
+                    onClick={internalAnswerRemove}
+                    data-entity={val.id}
+                  />
+                </li>
+                <li>
+                  <IconButton
+                    icon="check"
+                    buttonType={correct === val.id ? "positive" : "normal"}
+                    onClick={internalAnswerCorrect}
+                    data-entity={val.id}
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className={styles.actions}>
-            <ul className={styles.actionItems}>
-              <li>
-                <IconButton icon="trash" buttonType="negative" />
-              </li>
-              <li>
-                <IconButton icon="check" buttonType="normal" />
-              </li>
-            </ul>
+        ))}
+
+        <div className={styles.row}>
+          {answers.length === 0 && (
+            <Title className={styles.title} text="Answers" type="inline" />
+          )}
+          <div className={styles.add}>
+            <Button
+              buttonType="normal"
+              icon="plus"
+              onClick={onAnswerAdd}
+              disabled={answers.length >= maxAnswers}
+            >
+              Add Answer
+            </Button>
           </div>
         </div>
       </div>

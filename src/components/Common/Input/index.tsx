@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import classNames from "classnames";
 
 import styles from "./Input.module.scss";
@@ -24,18 +24,12 @@ const Input: React.FC<InputProps> = ({
   validateFunc = defaultValidateFunc,
   ...props
 }: InputProps) => {
-  const [internalValue, setInternalValue] = useState<string | undefined>(
-    (value || "").toString(),
-  );
-
   const isValid = useMemo<boolean>(() => {
-    return validateFunc(internalValue);
-  }, [internalValue, validateFunc]);
+    return validateFunc(value?.toString());
+  }, [value, validateFunc]);
 
   const onInternalChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInternalValue(e.target.value);
-
       if (onChange) {
         onChange(e);
       }
@@ -47,7 +41,7 @@ const Input: React.FC<InputProps> = ({
     styles.wrapper,
     [styles[inputSize]],
     {
-      [styles.dirty]: !!internalValue && isValid,
+      [styles.dirty]: !!value && isValid,
     },
     {
       [styles.hasSubmit]: !!onTextSubmit,
@@ -61,14 +55,14 @@ const Input: React.FC<InputProps> = ({
           className={styles.input}
           onChange={onInternalChange}
           maxLength={maxLength}
-          value={internalValue}
+          value={value}
           {...props}
         />
 
         {onTextSubmit && (
           <IconButton
             onClick={(): void => {
-              onTextSubmit(internalValue);
+              onTextSubmit(value?.toString());
             }}
             className={styles.button}
             type="submit"
@@ -78,7 +72,7 @@ const Input: React.FC<InputProps> = ({
       </div>
       {maxLength && (
         <p className={styles.valueLength}>
-          {maxLength - (internalValue ? internalValue.toString().length : 0)}
+          {maxLength - (value ? value.toString().length : 0)}
         </p>
       )}
     </div>

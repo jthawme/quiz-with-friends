@@ -3,16 +3,29 @@
 }
 
 .wrapper {
+  position: relative;
+
   display: grid;
 
   grid-template-columns: repeat(8, 1fr);
   column-gap: var(--size-unit-4);
 }
 
+.line {
+  width: 2px;
+  flex-grow: 1;
+
+  background-color: var(--color-bg-light);
+
+  margin-left: calc(var(--icon-button-size) / 2);
+  margin-top: 10px;
+}
+
 .num {
   --avatar-button-text-size: var(--font-size-normal);
 
   grid-column: 1 / span 1;
+  grid-row: 1 / -1;
 
   padding-top: var(--question-create-row-compensate);
 }
@@ -63,4 +76,8 @@
   li {
     margin-right: var(--size-unit-1);
   }
+}
+
+.add {
+  grid-column: 2 / span 6;
 }
