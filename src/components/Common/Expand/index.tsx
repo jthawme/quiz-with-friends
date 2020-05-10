@@ -66,6 +66,10 @@ const ExpandDiv: React.FC<ExpandDivProps> = ({
 
         await singleRaf();
 
+        if (!elRef.current) {
+          return;
+        }
+
         const last = elRef.current.getBoundingClientRect();
 
         cls.current = getClassName(

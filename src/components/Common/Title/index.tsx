@@ -19,7 +19,7 @@ const Title: React.FC<TitleProps> = ({
   text,
   helpText,
   rightSlot,
-  tagName: El = "h1",
+  tagName: El = "span",
   type = "main",
   className,
   ...props

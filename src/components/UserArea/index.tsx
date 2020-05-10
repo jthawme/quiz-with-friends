@@ -6,15 +6,17 @@ import React, {
   useMemo,
 } from "react";
 
-import styles from "./UserArea.module.scss";
 import { ExpandDiv } from "../Common/Expand";
 import { MenuItem } from "../Menu";
 import { Button } from "../Common/Button";
 import { AvatarButton } from "../Common/AvatarButton";
 
-interface UserAreaProps {
-  name: string;
-  image?: string;
+import { Player } from "../../core/types/room";
+
+import styles from "./UserArea.module.scss";
+import { getInitials } from "../../core/utils";
+
+interface UserAreaProps extends Player {
   onChangeName: (name: string) => void;
   onChangeImage: (image: string) => void;
   initialsLength?: number;
@@ -30,12 +32,7 @@ const UserArea: React.FC<UserAreaProps> = ({
   disabled,
 }: UserAreaProps) => {
   const initials = useMemo(() => {
-    const split = name.split(" ");
-
-    if (split.length > initialsLength) {
-      split.length = initialsLength;
-    }
-    return split.map((w) => w.charAt(0).toUpperCase()).join("");
+    return getInitials(name, initialsLength);
   }, [name, initialsLength]);
 
   const elRef = useRef<HTMLDivElement>(null);

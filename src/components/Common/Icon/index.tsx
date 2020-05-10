@@ -19,6 +19,7 @@ import {
   Smile,
   Edit,
   Share2,
+  Loader,
 } from "react-feather";
 import { ReactComponent as Help } from "./extra/help.svg";
 
@@ -43,6 +44,7 @@ export const icons = {
   smile: Smile,
   edit: Edit,
   share: Share2,
+  loader: Loader,
 };
 
 export type IconList = keyof typeof icons;

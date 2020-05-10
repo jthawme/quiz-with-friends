@@ -81,8 +81,14 @@ type CreateQuizAction =
   | RemoveAnswer
   | CorrectAnswer;
 
+// export const initialState: Quiz = {
+//   title: "",
+//   code: getRoomCode(),
+//   questions: [getEmptyQuestion()],
+// };
+
 export const initialState: Quiz = {
-  title: "",
+  title: "Quiz Title",
   code: getRoomCode(),
   questions: [getEmptyQuestion()],
 };

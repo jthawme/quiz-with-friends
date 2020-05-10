@@ -10,6 +10,7 @@ import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Create } from "./pages/Create";
+import { Game } from "./pages/Game";
 // import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Home path="/" />
         <About path="/about" />
         <Create path="/create" />
+        <Game path="/game/:roomCode" />
       </Router>
     </Layout>
   </React.StrictMode>,

@@ -56,6 +56,7 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
         onToggleMenu={(): void => setMenuOpen(!menuOpen)}
         rightSlot={
           <UserArea
+            id={"id-goes-here"}
             name={name}
             image={image}
             onChangeImage={onChangeImage}

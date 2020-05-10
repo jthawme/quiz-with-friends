@@ -22,7 +22,8 @@
     "react-scripts": "3.4.1",
     "react-use-measure": "^2.0.0",
     "typed-css-modules": "^0.6.3",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "unique-names-generator": "^4.2.0"
   },
   "scripts": {
     "ts:css": "tcm -s -c -p src/**/*.module.scss",

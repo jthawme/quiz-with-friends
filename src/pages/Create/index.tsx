@@ -3,16 +3,18 @@ import React, { useReducer, useCallback } from "react";
 import { RouteComponentProps } from "@reach/router";
 
 import { DotBackground } from "../../components/DotBackground";
+import { QuestionCreate } from "../../components/QuestionCreate";
+import { MenuItem } from "../../components/Menu";
 import { Page } from "../../components/Common/Page";
 import { Row } from "../../components/Common/Row";
 import { Title } from "../../components/Common/Title";
-import { QuestionCreate } from "../../components/QuestionCreate";
+import { Input } from "../../components/Common/Input";
+import { Alert } from "../../components/Common/Alert";
+import { Button } from "../../components/Common/Button";
 
 import { reducer, initialState, QuizActionTypes } from "../../core/types/quiz";
 import { getEmptyAnswer, getEmptyQuestion } from "../../core/utils";
 import styles from "./Create.module.scss";
-import { Input } from "../../components/Common/Input";
-import { MenuItem } from "../../components/Menu";
 
 const Create: React.FC<RouteComponentProps> = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -146,6 +148,23 @@ const Create: React.FC<RouteComponentProps> = () => {
               Add question
             </MenuItem>
           </div>
+        </Row>
+        <Row>
+          <Alert initialDelay={0} canClose={false}>
+            <Title text="Ready?" type="sub" />
+            <p>
+              If you are ready to create your quiz, hit the button below, just
+              know that you can’t change the questions after you hit this
+              button!
+            </p>
+            <Button
+              to={`/game/${state.code}`}
+              icon="check"
+              buttonType="positive"
+            >
+              I'm Ready
+            </Button>
+          </Alert>
         </Row>
       </Page>
     </>

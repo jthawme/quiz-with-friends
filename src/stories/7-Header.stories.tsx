@@ -30,6 +30,7 @@ export const HeaderBlock: React.FC = () => {
       onToggleMenu={(): void => setOpen(!open)}
       rightSlot={
         <UserArea
+          id="id-goes-here"
           name={name}
           image={image}
           onChangeName={(newName): void => setName(newName)}
@@ -46,6 +47,7 @@ export const UserAreaBlock: React.FC = () => {
       style={{ display: "flex", justifyContent: "flex-end", width: "250px" }}
     >
       <UserArea
+        id="id-goes-here"
         name="User 2020"
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         onChangeName={(): void => {}}
