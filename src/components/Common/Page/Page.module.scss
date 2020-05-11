@@ -4,3 +4,8 @@
   padding: var(--size-header) var(--size-page-margin) var(--size-page-margin);
   margin: 0 auto;
 }
+
+.noSides {
+  padding-left: 0;
+  padding-right: 0;
+}

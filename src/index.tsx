@@ -11,6 +11,7 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Create } from "./pages/Create";
 import { Game } from "./pages/Game";
+import { Play } from "./pages/Play";
 // import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
@@ -21,6 +22,7 @@ ReactDOM.render(
         <About path="/about" />
         <Create path="/create" />
         <Game path="/game/:roomCode" />
+        <Play path="/play/:roomCode" />
       </Router>
     </Layout>
   </React.StrictMode>,

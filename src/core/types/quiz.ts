@@ -182,3 +182,6 @@ export const reducer = (state: Quiz, action: CreateQuizAction): Quiz => {
       return state;
   }
 };
+
+export const QUIZ_TITLE_MAX_LENGTH = 50;
+export const QUIZ_MAX_QUESTIONS = 25;

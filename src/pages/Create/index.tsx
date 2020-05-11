@@ -1,6 +1,6 @@
-import React, { useReducer, useCallback } from "react";
+import React, { useReducer, useCallback, useState } from "react";
 
-import { RouteComponentProps } from "@reach/router";
+import { RouteComponentProps, navigate } from "@reach/router";
 
 import { DotBackground } from "../../components/DotBackground";
 import { QuestionCreate } from "../../components/QuestionCreate";
@@ -12,12 +12,20 @@ import { Input } from "../../components/Common/Input";
 import { Alert } from "../../components/Common/Alert";
 import { Button } from "../../components/Common/Button";
 
-import { reducer, initialState, QuizActionTypes } from "../../core/types/quiz";
+import {
+  reducer,
+  initialState,
+  QuizActionTypes,
+  QUIZ_TITLE_MAX_LENGTH,
+} from "../../core/types/quiz";
 import { getEmptyAnswer, getEmptyQuestion } from "../../core/utils";
 import styles from "./Create.module.scss";
+import { validateQuiz } from "../../core/validation/quiz";
 
 const Create: React.FC<RouteComponentProps> = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formError, setFormError] = useState<string>();
 
   const onTitleUpdate = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,6 +113,20 @@ const Create: React.FC<RouteComponentProps> = () => {
     });
   }, [state]);
 
+  const onAdvance = useCallback(() => {
+    setIsSubmitting(true);
+
+    validateQuiz
+      .validate(state)
+      .then(() => {
+        navigate(`/game/${state.code}`);
+      })
+      .catch((err) => {
+        setFormError(err.path);
+        setIsSubmitting(false);
+      });
+  }, [state]);
+
   return (
     <>
       <DotBackground amount={50} />
@@ -117,9 +139,10 @@ const Create: React.FC<RouteComponentProps> = () => {
             <Title type="inline" text="Title" tagName="span" />
             <Input
               inputSize="normal"
-              maxLength={50}
+              maxLength={QUIZ_TITLE_MAX_LENGTH}
               value={state.title}
               onChange={onTitleUpdate}
+              error={formError === "title"}
             />
           </div>
           <div className={styles.codeBlock}>
@@ -140,6 +163,8 @@ const Create: React.FC<RouteComponentProps> = () => {
                 onAnswerAdd={onAnswerAdd}
                 onAnswerCorrect={onAnswerCorrect}
                 onAnswerRemove={onAnswerRemove}
+                errorPath={formError}
+                errorPrefix={`questions[${index}].`}
               />
             );
           })}
@@ -157,10 +182,16 @@ const Create: React.FC<RouteComponentProps> = () => {
               know that you can’t change the questions after you hit this
               button!
             </p>
+            {!!formError && (
+              <p className={styles.error}>
+                Make sure everything is filled out correctly
+              </p>
+            )}
             <Button
-              to={`/game/${state.code}`}
+              onClick={onAdvance}
               icon="check"
               buttonType="positive"
+              disabled={isSubmitting}
             >
               I'm Ready
             </Button>

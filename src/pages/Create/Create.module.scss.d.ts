@@ -3,6 +3,7 @@ declare const styles: {
   readonly "titleBlock": string;
   readonly "codeBlock": string;
   readonly "addQuestionBlock": string;
+  readonly "error": string;
 };
 export = styles;
 

@@ -10,7 +10,7 @@ export const getEntityId = (): string => randomString.generate();
 
 export const getRoomCode = (): string =>
   randomString.generate({
-    length: 6,
+    length: 5,
     capitalization: "uppercase",
   });
 

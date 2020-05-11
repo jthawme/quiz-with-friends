@@ -16,6 +16,8 @@
 }
 
 .outer {
+  position: relative;
+
   width: 100%;
 }
 
@@ -30,6 +32,25 @@
   border: var(--input-border);
 
   overflow: hidden;
+}
+
+.bottom {
+  position: relative;
+
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+.loader {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+}
+
+.error {
+  --input-border: 1px solid var(--color-accent-1);
 }
 
 .normal {

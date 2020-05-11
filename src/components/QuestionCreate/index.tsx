@@ -5,7 +5,11 @@ import { Input } from "../Common/Input";
 import { IconButton } from "../Common/IconButton";
 import { Title } from "../Common/Title";
 
-import { Question } from "../../core/types/question";
+import {
+  Question,
+  QUESTION_TITLE_MAX_LENGTH,
+  QUESTION_ANSWER_MAX_LENGTH,
+} from "../../core/types/question";
 
 import styles from "./QuestionCreate.module.scss";
 import { Button } from "../Common/Button";
@@ -18,6 +22,8 @@ interface QuestionCreateProps extends Question {
   onAnswerRemove: (id: string, answerId: string) => void;
   onAnswerCorrect: (id: string, answerId: string) => void;
   maxAnswers?: number;
+  errorPath?: string;
+  errorPrefix?: string;
 }
 
 const QuestionCreate: React.FC<QuestionCreateProps> = ({
@@ -32,6 +38,8 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
   onAnswerRemove,
   onAnswerCorrect,
   maxAnswers = 5,
+  errorPath,
+  errorPrefix = "",
 }: QuestionCreateProps) => {
   const internalQuestionUpdate = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,6 +85,13 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
     onAnswerAdd(id);
   }, [id, onAnswerAdd]);
 
+  const hasError = useCallback(
+    (str: string): boolean => {
+      return !!(errorPath && errorPath === `${errorPrefix}${str}`);
+    },
+    [errorPath, errorPrefix],
+  );
+
   return (
     <div id={id} className={styles.wrapper}>
       <div className={styles.num}>
@@ -96,9 +111,10 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
           <div className={styles.inner}>
             <Input
               inputSize="normal"
-              maxLength={200}
+              maxLength={QUESTION_TITLE_MAX_LENGTH}
               value={text}
               onChange={internalQuestionUpdate}
+              error={hasError("text")}
             />
           </div>
         </div>
@@ -112,10 +128,11 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
             <div className={styles.inner}>
               <Input
                 inputSize="normal"
-                maxLength={100}
+                maxLength={QUESTION_ANSWER_MAX_LENGTH}
                 value={val.text}
                 data-entity={val.id}
                 onChange={internalAnswerUpdate}
+                error={hasError(`answers[${index}].text`)}
               />
             </div>
             <div className={styles.actions}>

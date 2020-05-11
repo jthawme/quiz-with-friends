@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 
 import { useMediaQuery } from "react-responsive";
+import { RouteComponentProps, navigate } from "@reach/router";
 
 import { Title } from "../../components/Common/Title";
 import { Page } from "../../components/Common/Page";
@@ -11,19 +12,25 @@ import { DotBackground } from "../../components/DotBackground";
 import { TileGroup } from "../../components/Common/Tile/TileGroup";
 import { Tile } from "../../components/Common/Tile";
 import { Alert } from "../../components/Common/Alert";
-import { RouteComponentProps } from "@reach/router";
+
+import { wait } from "../../core/utils";
 
 const validateRoom = (value?: string): boolean => {
   return !!(value && value.length === 5);
 };
 
 const Home: React.FC<RouteComponentProps> = () => {
+  const [isJoiningRoom, setIsJoiningRoom] = useState<boolean>(false);
+
   const isTablet = useMediaQuery({
     query: "(min-width: 768px)",
   });
 
   const onRoomSubmit = useCallback((value?: string) => {
-    console.log("room code", value);
+    setIsJoiningRoom(true);
+    wait(1500).then(() => {
+      navigate(`/play/${value}`);
+    });
   }, []);
 
   return (
@@ -59,6 +66,8 @@ const Home: React.FC<RouteComponentProps> = () => {
             maxLength={5}
             validateFunc={validateRoom}
             onTextSubmit={onRoomSubmit}
+            disabled={isJoiningRoom}
+            loading={isJoiningRoom}
           />
         </Row>
 
