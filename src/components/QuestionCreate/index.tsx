@@ -107,7 +107,9 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
 
       <div className={styles.content}>
         <div className={styles.row}>
-          <Title className={styles.title} text="Question" type="inline" />
+          <Title className={styles.title} type="inline">
+            Question
+          </Title>
           <div className={styles.inner}>
             <Input
               inputSize="normal"
@@ -122,7 +124,9 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
         {answers.map((val, index) => (
           <div key={index} className={`${styles.row} ${styles.withActions}`}>
             {index === 0 && (
-              <Title className={styles.title} text="Answers" type="inline" />
+              <Title className={styles.title} type="inline">
+                Answers
+              </Title>
             )}
 
             <div className={styles.inner}>
@@ -161,7 +165,9 @@ const QuestionCreate: React.FC<QuestionCreateProps> = ({
 
         <div className={styles.row}>
           {answers.length === 0 && (
-            <Title className={styles.title} text="Answers" type="inline" />
+            <Title className={styles.title} type="inline">
+              Answers
+            </Title>
           )}
           <div className={styles.add}>
             <Button

@@ -13,20 +13,30 @@ import { AvatarButton } from "../../../components/Common/AvatarButton";
 import { getInitials } from "../../../core/utils";
 
 const Lobby: React.FC = () => {
-  const { title, code, players } = useGameContext();
+  const { title, code, players, setPlaying } = useGameContext();
   return (
     <>
       <DotBackground amount={100} />
       <Page>
         <Row className={styles.columns}>
           <div className={styles.left}>
-            <Title className={styles.subtitle} type="inline" text="Title" />
-            <Title className={styles.title} type="main" text={title} />
+            <Title className={styles.subtitle} type="inline">
+              Title
+            </Title>
+            <Title className={styles.title} type="main">
+              {title}
+            </Title>
 
-            <Title className={styles.subtitle} type="inline" text="Room Code" />
-            <Title className={styles.title} type="main" text={code} />
+            <Title className={styles.subtitle} type="inline">
+              Room Code
+            </Title>
+            <Title className={styles.title} type="main">
+              {code}
+            </Title>
 
-            <Title className={styles.subtitle} type="inline" text="Players" />
+            <Title className={styles.subtitle} type="inline">
+              Players
+            </Title>
 
             <ul className={styles.playerList}>
               {players.map((player) => {
@@ -45,7 +55,7 @@ const Lobby: React.FC = () => {
           </div>
 
           <div className={styles.right}>
-            <Title type="sub" text="Next Steps" />
+            <Title type="sub">Next Steps</Title>
 
             <p>
               Anyone playing should enter the room code, into the home page of
@@ -60,7 +70,7 @@ const Lobby: React.FC = () => {
             </p>
             <p>Then, when you’re ready, hit the green button</p>
 
-            <Button buttonType="positive" icon="check">
+            <Button buttonType="positive" icon="check" onClick={setPlaying}>
               Everyone is in, let&apos;s play
             </Button>
           </div>

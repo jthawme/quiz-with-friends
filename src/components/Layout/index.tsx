@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
+import { globalHistory } from "@reach/router";
+
 import { MenuSlider } from "../Menu/MenuSlider";
 import { Header } from "../Header";
 import { UserArea } from "../UserArea";
@@ -47,6 +49,12 @@ const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
 
   const onChangeName = useCallback((name: string) => {
     setName(name);
+  }, []);
+
+  useEffect(() => {
+    return globalHistory.listen(() => {
+      setMenuOpen(false);
+    });
   }, []);
 
   return (

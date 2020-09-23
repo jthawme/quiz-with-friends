@@ -2,6 +2,8 @@ import { getEntityId, generateName } from "../utils";
 
 export enum RoomState {
   WAITING,
+  PLAYING,
+  ENDED,
 }
 
 export interface Player {

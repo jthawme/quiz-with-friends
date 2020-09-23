@@ -21,10 +21,10 @@ const Header: React.FC<HeaderProps> = ({
     <header className={styles.header}>
       <div className={styles.left}>
         <MenuIcon open={menuOpen} onClick={onToggleMenu} />
+        <Link to="/" className={styles.logo}>
+          <Logo />
+        </Link>
       </div>
-      <Link to="/" className={styles.logo}>
-        <Logo />
-      </Link>
       <div className={styles.right}>{rightSlot || null}</div>
     </header>
   );

@@ -132,11 +132,13 @@ const Create: React.FC<RouteComponentProps> = () => {
       <DotBackground amount={50} />
       <Page>
         <Row>
-          <Title type="main" text="Create a quiz" />
+          <Title type="main">Create a quiz</Title>
         </Row>
         <Row className={styles.topRow}>
           <div className={styles.titleBlock}>
-            <Title type="inline" text="Title" tagName="span" />
+            <Title type="inline" tagName="span">
+              Title
+            </Title>
             <Input
               inputSize="normal"
               maxLength={QUIZ_TITLE_MAX_LENGTH}
@@ -146,12 +148,18 @@ const Create: React.FC<RouteComponentProps> = () => {
             />
           </div>
           <div className={styles.codeBlock}>
-            <Title type="inline" text="Room Code" tagName="span" />
-            <Title type="main" text={state.code} tagName="span" />
+            <Title type="inline" tagName="span">
+              Room Code
+            </Title>
+            <Title type="main" tagName="span">
+              {state.code}
+            </Title>
           </div>
         </Row>
         <Row>
-          <Title type="sub" text="Questions" tagName="span" />
+          <Title type="sub" tagName="span">
+            Questions
+          </Title>
           {state.questions.map((val, index) => {
             return (
               <QuestionCreate
@@ -176,7 +184,7 @@ const Create: React.FC<RouteComponentProps> = () => {
         </Row>
         <Row>
           <Alert initialDelay={0} canClose={false}>
-            <Title text="Ready?" type="sub" />
+            <Title type="sub">Ready?</Title>
             <p>
               If you are ready to create your quiz, hit the button below, just
               know that you can’t change the questions after you hit this

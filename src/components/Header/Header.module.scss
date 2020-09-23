@@ -14,8 +14,14 @@
 }
 
 .left {
-  position: relative;
-  top: 0.5px;
+  position: absolute;
+
+  display: flex;
+
+  align-items: center;
+
+  top: var(--size-page-margin);
+  left: var(--size-page-margin);
 }
 
 .logo {
@@ -23,5 +29,10 @@
 }
 
 .right {
+  position: absolute;
+
+  top: var(--size-page-margin);
+  right: var(--size-page-margin);
+
   justify-self: flex-end;
 }

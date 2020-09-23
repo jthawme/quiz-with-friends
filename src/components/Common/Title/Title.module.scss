@@ -3,8 +3,11 @@
   --title-font-size: var(--font-size-large);
   --title-help-margin: var(--size-unit-1) 0 0 var(--size-unit-2);
 
+  --title-content-justify: space-between;
+
   @media screen and (min-width: 768px) {
     --title-help-margin: var(--size-unit-1) var(--size-unit-2) 0;
+    --title-content-justify: flex-start;
   }
 }
 
@@ -32,14 +35,14 @@
 
   width: 100%;
 
-  justify-content: space-between;
+  justify-content: var(--title-content-justify);
 
   flex-grow: 1;
 
   @media screen and (min-width: 768px) {
     width: auto;
 
-    justify-content: flex-start;
+    justify-content: var(--title-content-justify);
   }
 }
 

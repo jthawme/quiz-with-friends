@@ -1,0 +1,50 @@
+:root {
+  --leaderboard-number-width: 40px;
+}
+
+.container {
+  .item {
+    margin-bottom: var(--size-unit-1);
+  }
+}
+
+.title {
+  --title-content-justify: center;
+
+  text-align: center;
+}
+
+.spacer {
+  color: var(--color-text-light);
+}
+
+.item {
+  display: grid;
+
+  grid-template-columns: min-content 1fr min-content;
+
+  align-items: center;
+
+  gap: var(--size-unit-2);
+
+  &:nth-child(3n) .text {
+    color: var(--color-accent-1);
+  }
+
+  &:nth-child(3n + 1) .text {
+    color: var(--color-accent-2);
+  }
+
+  &:nth-child(3n + 2) .text {
+    color: var(--color-accent-3);
+  }
+}
+
+.number {
+  color: var(--color-text);
+  width: var(--leaderboard-number-width);
+}
+
+.score {
+  color: var(--color-text-light);
+}

@@ -8,7 +8,6 @@ import { Tooltip } from "../Tooltip";
 type TitleTypes = "main" | "sub" | "inline";
 
 interface TitleProps extends React.HTMLAttributes<HTMLDivElement> {
-  text: string;
   helpText?: string;
   rightSlot?: React.ReactNode;
   tagName?: keyof JSX.IntrinsicElements;
@@ -16,7 +15,7 @@ interface TitleProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Title: React.FC<TitleProps> = ({
-  text,
+  children,
   helpText,
   rightSlot,
   tagName: El = "span",
@@ -29,7 +28,7 @@ const Title: React.FC<TitleProps> = ({
   return (
     <div className={cls} {...props}>
       <div className={styles.content}>
-        <El className={styles.title}>{text}</El>
+        <El className={styles.title}>{children}</El>
         {helpText ? (
           <span className={styles.help}>
             <Tooltip>{helpText}</Tooltip>

@@ -13,7 +13,7 @@ const About: React.FC<RouteComponentProps> = () => {
       <DotBackground amount={25} />
       <Page>
         <Row id="about" className={styles.section}>
-          <Title className={styles.title} text="About" />
+          <Title className={styles.title}>About</Title>
           <p>
             Quiz with friends was born out of a time of remote fun. Its a quiz
             that encourages you to be engaged in a video call at the same time,
@@ -22,7 +22,7 @@ const About: React.FC<RouteComponentProps> = () => {
           </p>
         </Row>
         <Row id="how-to-play" className={styles.section}>
-          <Title className={styles.title} text="How To Play" />
+          <Title className={styles.title}>How To Play</Title>
           <p>
             Quiz with friends is a multiple choice style quiz, one person{" "}
             <Link to="/create">creates a quiz</Link> or{" "}
@@ -38,7 +38,7 @@ const About: React.FC<RouteComponentProps> = () => {
           </p>
         </Row>
         <Row id="contact" className={styles.section}>
-          <Title className={styles.title} text="Contact" />
+          <Title className={styles.title}>Contact</Title>
           <p>
             If you want to get in touch for any reason, or if you find a
             problem, please email me at{" "}

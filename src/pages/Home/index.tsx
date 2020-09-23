@@ -56,10 +56,9 @@ const Home: React.FC<RouteComponentProps> = () => {
         </Alert>
 
         <Row>
-          <Title
-            text="Join Game"
-            helpText="Enter the code to a room to join it"
-          />
+          <Title helpText="Enter the code to a room to join it">
+            Join Game
+          </Title>
           <Input
             inputSize={isTablet ? "large" : "normal"}
             placeholder="5 Digit Room Code..."
@@ -73,14 +72,15 @@ const Home: React.FC<RouteComponentProps> = () => {
 
         <Row>
           <Title
-            text="Quick Create"
             helpText="Populate a quiz quickly to starting playing"
             rightSlot={
               <Button to="/create" icon="plus-circle">
                 Create your own
               </Button>
             }
-          />
+          >
+            Quick Create
+          </Title>
 
           <TileGroup>
             <Tile

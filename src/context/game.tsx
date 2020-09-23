@@ -7,11 +7,13 @@ import React, {
   useCallback,
   useReducer,
 } from "react";
-import { wait } from "../core/utils";
+import { wait, noop } from "../core/utils";
 import {
   Room,
   initialState as RoomInitialState,
   reducer as RoomReducer,
+  RoomActionTypes,
+  RoomState,
 } from "../core/types/room";
 import {
   Quiz,
@@ -22,6 +24,7 @@ import { Loading } from "../components/Common/Loading";
 
 interface GameContextProps extends Room, Quiz {
   roomLoading: boolean;
+  setPlaying: () => void;
 }
 
 interface GameContextProviderProps {
@@ -31,6 +34,7 @@ interface GameContextProviderProps {
 
 const GameContext = createContext<GameContextProps>({
   roomLoading: true,
+  setPlaying: noop,
   ...QuizInitialState,
   ...RoomInitialState,
 });
@@ -57,8 +61,20 @@ const GameContextProvider: React.FC<GameContextProviderProps> = ({
     }
   }, [code, loadRoom]);
 
+  const setPlaying = useCallback(() => {
+    if (roomState.state === RoomState.WAITING) {
+      roomDispatch({
+        type: RoomActionTypes.UPDATE_STATE,
+        payload: {
+          state: RoomState.PLAYING,
+        },
+      });
+    }
+  }, [roomState.state]);
+
   const value = {
     roomLoading,
+    setPlaying,
     ...quizState,
     ...roomState,
   };

@@ -59,3 +59,9 @@ export const generateName = (): string => {
     style: "capital",
   });
 };
+
+type TITLE_CLASSES = "sub" | "main" | "inline";
+
+export const attachTitleClass = (cls: string, title: TITLE_CLASSES): string => {
+  return `text-${title}-heading ${cls}`;
+};
